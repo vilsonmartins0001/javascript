@@ -20,17 +20,26 @@
         
 
         }
+        .destaque{
+            background-color: blueviolet;
+
+        }
     </style>
 </head>
 <body>
     <div id="pai">
-        <div><button>html</button></div>
+        <div><button onclick="mudarCor()">html</button></div>
         <div><button>CSS</button></div>
         <div><button>Javascript</button></div>
         <div><button>PHP</button></div>
         <div><button>React</button></div>
         <div><button>MySQL</button></div>
     </div>
-    <source src="script01.js" type="">
+    <script>
+       const botoes = [...document.getElementsByTagName("button")]
+       botoes.map((el)=>{
+        el.classList.add("destaque")
+       })
+    </script>
 </body>
 </html>
