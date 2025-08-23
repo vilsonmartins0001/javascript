@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="tabela">
+        <tbody>
+            <tr>
+                <th>checbox</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id="imaster">master</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="chec-filho" id=""></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="chec-filho" id=""></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="chec-filho" id=""></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="chec-filho" id=""></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="chec-filho" id=""></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="chec-filho" id=""></td>
+            </tr>
+
+        </tbody>
+    </table>
+    <script>
+        const linhas = document.querySelectorAll('#tabela tbody tr')              //seleciona a linha da tabela
+        let dados = []                                              //cria a variavel de Array
+
+        linhas.forEach((linha, index) =>{                           //faz a busca no Array de acordo com seu index
+
+            
+
+
+        })
+
+
+        const cbxmaster = document.getElementById("#imaster")
+        const cbx = document.querySelectorAll(`chec-filho`)
+
+        cbxmaster.addEventListener("change", function(){
+            cbx.forEach(item =>{
+                item.checked = cbxmaster.checked
+            });
+        });
+        
+    </script>
+    
+</body>
+</html>
