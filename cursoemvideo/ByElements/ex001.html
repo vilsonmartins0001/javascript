@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByElements</title>
+    <style>
+        body{
+            margin: 100px;
+        }
+        div{
+            border: 1px solid black;
+            background-color: rgb(212, 235, 212);
+            width: 100px;
+            height: 40px;
+            margin: 5px;
+            text-align: center;
+            padding-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="c1">HTML</div>
+    <div id="c2">CSS</div>
+    <div id="c3">JavaScript</div>
+    <div id="c4">PHP</div>
+    <div id="c5">React</div>
+    <div id="c6">MySQL</div>
+
+    <script>
+        const dc1 = document.getElementById("c1") //pega o elemento por "id"
+        dc1.innerText = 'Vilson'      //substitue o elemento que foi pego
+        const dc4 = document.getElementById("c4")
+        dc4.innerText = 'Martins'
+        console.log(dc4)        //mostra o elemento pegado no console
+        console.log(dc4.id)     //mostra o id do elemento no console
+        console.log(dc4.innerHTML)  //mostra o elemeno que esta no elemento Html indicado no console
+        dc4.innerHTML = 'Amaral' // modifica o elemento indicado
+        console.log(dc4.innerHTML) //mostra o elemento modificado no console
+
+    </script>
+    
+</body>
+</html>

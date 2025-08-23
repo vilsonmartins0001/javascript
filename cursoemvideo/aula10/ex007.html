@@ -7,20 +7,23 @@
 </head>
 <body>
     <h1>Somando Valores</h1>
-    <input type="number" name="txbn1" id="itxn1"> + 
-    <input type="number" name="txbn2" id="itxn2">
+    <p>Aprendendo a usar o <strong>DOM</strong></p>
+    <p>somente um teste!</p>
+    <input type="number"  id="inp01"></input> + 
+    <input type="number"  id="inp02"></input>
     <input type="button" value="Somar" onclick="somar()">
     <div id="res">Resultado</div>
 
-    <script>
+    <script>               
         function somar(){
-            var tn1 = window.document.getElementById('itxn1')
-            var tn2 = window.document.querySelector('#txbn2')
-            var res = window.document.getElementById(`res`)
+            var tn1 = window.document.getElementById("inp01")           //pegar Elemento por id
+            var tn2 = window.document.getElementById("inp02")
+            var res = window.document.getElementById("res")
             var n1 = Number(tn1.value)
             var n2 = Number(tn2.value)
             var s = n1 + n2
-            res.innerHTML = s
+            res.innerHTML = `A soma ebtre ${n1} e ${n2} é igual a ${s}`
+           
         }
     </script>
     
