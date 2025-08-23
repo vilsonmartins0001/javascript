@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="c1">HTML</div>
+    <div id="c2">CSS</div>
+    <div id="c3">JavaScript</div>
+    <div id="c4">PHP</div>
+    <div id="c5">React</div>
+    <div id="c6">MySQL</div>
+
+
+
+    <script>
+        //-------------------- For Normal ------------ loop definido
+
+        let num=['um','dois','três','quatro','cinco']
+
+        for(i=0; i < num.length; i++){ //percorre todas as posições no array
+            console.log(i)
+        }
+        //--------------------------- for IN  ------------------ loop definido
+
+          for(posicao in num){ //cria-se a variavel "posicao" que recebe as posicoes do array "n1"
+            console.log(posicao)
+            console.log(num[posicao]) //imprime o objeto de cada posição indicando a variavel que receveu o array "num"
+          }
+        //------------------------- for of -----------------------------------------------------
+
+        for(posicao of num){   
+            console.log(posicao)//imprime diretamente o objeto sem precisar apontar o array "num"
+        }
+        //-------------------------------------------------------------------------------------
+
+        const objs = document.getElementsByTagName("div")
+        for(o of objs){
+            console.log(o)//imprime diretamente o objeto sem precisar apontar o array "objs"
+        }
+        for(o in objs){
+            console.log(o)//mprime a posição dos objetos
+        }
+
+
+    </script>
+</body>
+</html>
