@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QueryselectorALL</title>
+    <style>
+        body{
+            
+            margin: 100px;
+        }
+        div{
+            border: 1px solid black;
+            background-color: rgb(212, 235, 212);
+            width: 100px;
+            height: 40px;
+            margin: 5px;
+            text-align: center;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>teste
+    </h2>
+    <h2>TRABALHANDO COM BUSCA DE ELEMENTOS E ARRAYS</h2>
+    <div id="c1" class="primeiras" >HTML</div>
+    <div id="c2" class="primeiras" >CSS</div>
+    <div id="c3" class="primeiras" >JavaScript</div>
+    <div id="c4" class="primeiras" >PHP</div>
+    <div id="c5" class="primeiras" >React</div>
+    <div id="c6" class="primeiras" >MySQL</div>
+    <div id="c7">C++</div>
+    <div id="c8">C#</div>
+    <div id="c9">Arduino</div>
+    <div id="c10">React</div>
+    <div id="c11">Python</div>
+    <div id="c12">Raspberry</div>
+    
+
+    <script>                            //TRABALHANDO COM BUSCA DE ELEMENTOS E ARRAYS
+        
+        const divTodas=[...document.getElementsByTagName("div")]        //seleciona pela tag (retorna Array)
+        
+        const todas=[...document.querySelectorAll("div,h2")]            //seleciona pela "tag" (retornando Array)
+        const primeiras=[...document.querySelectorAll(".primeiras")]    //seleciona pela "classe" (retornando Array)
+        const c1=document.querySelector("div")                          // retorna o primeiro elemento encontrado
+        const p=document.querySelector("#c8")                           //retorna o elemento especificando o "id" use a "#"
+        const cl=[...document.querySelectorAll("div[class]")]           // retorna todas as "divs" que contém o parâmetro "class"
+        // "
+
+        console.log(todas)
+        console.log(divTodas)
+        console.log(primeiras)
+        console.log((p).innerText)
+        console.log((c1).innerText)
+        console.log(cl)
+      
+     /*
+        const arrayElementos = [dc1, dc2, dc3, dc4,dc5,dc6] // cria uma variavel de array com todos elementos pegados por "id"
+
+        for(d of arrayElementos ){  // percorre o array e armazena na variável "d"
+        d.innerHTML = 'vilson'      //troca o conteúdo de todos os elementos
+
+
+        }
+        
+        */
+
+    </script>
+    
+</body>
+</html>
