@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+        //-------------------- while ------------ loop definido
+        let n=0
+        while(n<10){  //enquanto "n" for menor que 10 
+            console.log(n)
+            n++ //incrementa o "n"
+        }
+        let n1=5
+        let fat=1
+        while(n1>=1){
+            fat*=n1 //fat multiplica o valor de "n1" e recebe esse valor ( na proxima execução "fat" que já está com valor de "n1" da primeira execução multiplicará o "n1" que foi decrementado anterior e fat receberá ele novamente )
+            n1--
+            console.log(fat)
+        }
+
+        //----------------------------while com break -----------------------------------
+
+        let n2=0
+        let max=100
+
+        while(n2<max){
+            console.log("vilson" + n2)
+           
+            if(n2==10){  //quando a condição for "true" executa a parada
+                break
+            }
+
+            n2++
+        }
+        //---------------------------------------for com continue--------------------------------
+        let pares=0
+        for(let i=n2; i<max; i++){          // "i" recebe "n2 (0)" enquanto for menor que "max(100)"
+        
+            if(i%2 != 0){ 
+                continue        //se a cindição for verdadeira "não faça nada e continue"
+            }
+            pares++
+
+        }
+        console.log("Quandidade de pares " + pares)
+        console.log("Fim do Programa")       
+    </script>
+</body>
+</html>
