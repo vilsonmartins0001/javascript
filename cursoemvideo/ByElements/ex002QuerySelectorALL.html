@@ -24,8 +24,8 @@
     <h2>teste
     </h2>
     <h2>TRABALHANDO COM BUSCA DE ELEMENTOS E ARRAYS</h2>
-    <div id="c1" class="primeiras" >HTML</div>
-    <div id="c2" class="primeiras" >CSS</div>
+    <div id="c1" class="primeiras" ><p>HTML</p></div>
+    <div id="c2" class="primeiras" ><P>CSS</P></div>
     <div id="c3" class="primeiras" >JavaScript</div>
     <div id="c4" class="primeiras" >PHP</div>
     <div id="c5" class="primeiras" >React</div>
@@ -42,7 +42,7 @@
         
         const divTodas=[...document.getElementsByTagName("div")]        //seleciona pela tag (retorna Array)
         
-        const todas=[...document.querySelectorAll("div,h2")]            //seleciona pela "tag" (retornando Array)
+        const todas=[...document.querySelectorAll("div > P")]            //seleciona pela "tag"  E O QUE ESTÁ DENTRO DA DIV "P" (retornando Array)
         const primeiras=[...document.querySelectorAll(".primeiras")]    //seleciona pela "classe" (retornando Array)
         const c1=document.querySelector("div")                          // retorna o primeiro elemento encontrado
         const p=document.querySelector("#c8")                           //retorna o elemento especificando o "id" use a "#"

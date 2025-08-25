@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QueryselectorALL</title>
+    <style>
+        body{
+            
+            margin: 100px;
+        }
+        div{
+            display: flex;
+            justify-content: center;
+            border: 1px solid black;
+            background-color: rgb(249, 252, 217);
+            width: 200px;
+            margin: 5px 0px;
+            padding: 5px;
+            border-radius: 10px;
+            border: 5px solid #888;
+            cursor: pointer;
+        }
+        div:hover{
+            border-color: #f00;
+        }
+        .c1{
+            border-color: #ccc;
+            color: #444;
+        }
+        .c2{
+            background-color: #444;
+            color: #ccc;
+        }
+        .destaque{
+            background-color: #800 !important;
+            color: #fcc;
+            border-color: #f00 !important;
+        }
+    </style>
+</head>
+<body>
+    <h2>teste
+    </h2>
+    <h2>TRABALHANDO COM BUSCA DE ELEMENTOS E ARRAYS</h2>
+    <div id="c1" class="c1" >HTML</div>
+    <div id="c2" class="c1" >CSS</div>
+    <div id="c3" class="c1" >JavaScript</div>
+    <div id="c4" class="c1" >PHP</div>
+    <div id="c5" class="c1" >React</div>
+    <div id="c6" class="c1" >MySQL</div>
+    <div id="c7" class="c2" >C++</div>
+    <div id="c8" class="c2" >C#</div>
+    <div id="c9" class="c2" >Arduino</div>
+    <div id="c10" class="c2" >c1v</div>
+    <div id="c11" class="c2" >Python</div>
+    <div id="c12" class="c2" >Raspberry</div>
+    
+
+    <script> //-----------------------------  TRABALHANDO COM addEventListener  ---------------------
+        const c1=document.querySelector("#c1")
+
+
+        c1.addEventListener("click",(evt)=>{ // O evento de click armazena os dados do objeto na variavel "evt"
+           const el=evt.target
+           el.classList.add("destaque") //aplica a classe "destaque no objeto capturado pelo evento"
+        })
+        
+        
+    </script>
+    
+</body>
+</html>
