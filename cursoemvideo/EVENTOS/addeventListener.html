@@ -39,6 +39,7 @@
             width: 200px;
             height: 30px;
             text-align: center;
+            cursor: pointer;
 
         }
         .sel{
@@ -78,10 +79,10 @@
         const todosCursos=[...document.querySelectorAll(".cursos")]
 
         todosCursos.map((el)=>{ //cria um map que percorre todas as div capturando os elementos
-            el.addEventListener("click",(evt)=>{
-                const curso=evt.target
-                curso.classList.toggle("sel") //quando clicar adciona/remve a classe "selecinhado" 
-            })
+           el.addEventListener("click",(event)=>{
+            const cursosel=event.target 
+            cursosel.classList.toggle("sel")
+           })
         })
 
         btn.addEventListener("click",()=>{
