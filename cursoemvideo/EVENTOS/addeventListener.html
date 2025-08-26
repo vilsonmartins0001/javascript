@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            border: none;
+        }
+        main{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .parent{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgb(231, 231, 231);
+            border: 5px solid black;
+            width: 300px;
+            height: 500px;
+            align-items: center;
+            padding: 10px;
+            margin: 40px;
+        }
+        .cursos{
+            display: flex;
+            justify-content: center;
+            background-color: lightgray;
+            border: 5px solid black;
+            border-radius: 10px;
+            padding: 5px;
+            margin: 5px 0px;
+            width: 200px;
+            height: 30px;
+            text-align: center;
+
+        }
+        .selecionado{
+            background-color: brown;
+            border-color: rgb(248, 6, 6);
+        }
+        #copy{
+            background-color: rgb(65, 65, 245);
+            color: white;
+            width: 150px;
+            height: 40px;
+           cursor: pointer;
+            border-radius: 10px;
+            margin: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <main>
+        <div class="parent" id="d1">
+            <div class="cursos" id="c1" >HTML</div>
+            <div class="cursos" id="c2" >CSS</div>
+            <div class="cursos" id="c1" >JavaScript</div>
+            <div class="cursos" id="c1" >PHP</div>
+            <div class="cursos" id="c1" >React</div>
+            <div class="cursos" id="c1" >MySQL</div>
+        </div>
+        <button id="btn-copy">Copiar</button>
+        <div class="parent" id="d2">
+        </div>
+    </main>
+    <script>
+        const d1=document.querySelector("d1")
+        const d2=document.querySelector("d2")
+        const btn=document.querySelector("btn-copy")
+        const todosCursos=[...document.querySelectorAll(".cursos")]
+
+        todosCursos.map((el)=>{ //cria um map que percorre todas as div capturando os elementos
+            el.addEventListener("click",(evt)=>{
+                const curso=evt.target
+                curso.classList.togle("selecionado") //quando clicar adciona/remve a classe "selecinhado" 
+            })
+        })
+
+
+    </script>
+    
+</body>
+</html>
