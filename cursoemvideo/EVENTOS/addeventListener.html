@@ -41,11 +41,11 @@
             text-align: center;
 
         }
-        .selecionado{
+        .sel{
             background-color: brown;
             border-color: rgb(248, 6, 6);
         }
-        #copy{
+        #btn-copy{
             background-color: rgb(65, 65, 245);
             color: white;
             width: 150px;
@@ -80,8 +80,13 @@
         todosCursos.map((el)=>{ //cria um map que percorre todas as div capturando os elementos
             el.addEventListener("click",(evt)=>{
                 const curso=evt.target
-                curso.classList.togle("selecionado") //quando clicar adciona/remve a classe "selecinhado" 
+                curso.classList.toggle("sel") //quando clicar adciona/remve a classe "selecinhado" 
             })
+        })
+
+        btn.addEventListener("click",()=>{
+            const cursoSelecionado=document.querySelectorAll(".sel")
+            console.log(cursoSelecionado)
         })
 
 
