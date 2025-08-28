@@ -23,9 +23,8 @@
             margin: 40px;
         }
         .cursos{
-            display: flex;
+            
             justify-content: center;
-            flex-direction: column;
             background-color: lightgray;
             border: 5px solid rgb(163, 163, 163);
             border-radius: 10px;
@@ -33,9 +32,13 @@
             margin: 5px 0px;
             width: 200px;
             height: 30px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .btn_lixeira{
+            width: 50px;
             cursor: pointer;
-
         }
         
         
@@ -54,7 +57,21 @@
         novoElenento.setAttribute("id","c"+chave+1)
         novoElenento.setAttribute("class","cursos")
         novoElenento.innerHTML=el
+
+        const btn_lixeira=document.createElement("img")
+        btn_lixeira.setAttribute("src","./btn_lixo.png")
+        btn_lixeira.setAttribute("class","btn_lixeira")
+        novoElenento.appendChild(btn_lixeira)
+
+
+
+        novoElenento.addEventListener("click",(evt)=>{
+            
+            mae.removeChild(evt.target)
+
+        })
         mae.appendChild(novoElenento)
+       
    })
     
 </script>
