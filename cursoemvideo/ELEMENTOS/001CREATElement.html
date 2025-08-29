@@ -50,12 +50,15 @@
     const cursos=["HTML","CSS","JavaScript","PHP","React","MySQL"]
 
     cursos.map((el,chave)=>{
-        const novoElenento=document.createElement("div")
-        novoElenento.setAttribute("id","c"+chave+1)
-        novoElenento.setAttribute("class","cursos")
-        novoElenento.innerHTML=el
-        mae.appendChild(novoElenento)
-   })
+        const newElement=document.createElement("div")
+        newElement.setAttribute("id","c"+chave)
+        newElement.setAttribute("class","cursos")
+        newElement.innerHTML=el
+        mae.appendChild(newElement)
+    })
+
+    
+
     
 </script>
     
