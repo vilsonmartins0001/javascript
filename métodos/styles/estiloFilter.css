@@ -22,7 +22,7 @@ button{
     display: flex;
     justify-content: center;
     width: 200px;
-    border: 4px solid #888;
+    border: 4px solid #ee7708;
     border-radius: 10px;
     margin: 5px 0px;
     padding: 0px 10px;
@@ -37,16 +37,17 @@ button{
     border-color: #f00 !important;
 }
 .c1{
-    background-color: #ccc;
+    background-color: #ffffff;
     color: #444;
 }
 .c2{
-    background-color: #ccc;
+    background-color: #ffffff;
     color: #444;
 }
 .caixa{
     border: 4px solid #000;
-    border-color: #eee;
+    border-color: #ee7708;
+    background-image: linear-gradient(to top, rgb(15, 199, 199) ,rgb(104, 141, 241));
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -55,6 +56,7 @@ button{
     margin: 5px;
     height: 500px;
     width: 300px;
+    border-radius: 20px;
 }
 .btn_lixeira{
     width: 25px;
@@ -77,4 +79,9 @@ button{
 }
 #nomeCurso{
     border: 3px solid #eee;
+}
+#nomeCurso:focus{
+    background-color: #fceee0;
+    border:2px solid #025;
+    border-radius: 5px;
 }

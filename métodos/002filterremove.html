@@ -16,7 +16,7 @@
             </div>
 
             <div id="caixaRemoverCurso" class="caixaFuncionalidades">
-                <button id="btnRemoverCurso">Curso selecionado</button>
+                <button id="btnRemoverCurso">Remover selecionado</button>
             </div>
 
             <div id="caixaCursoSelecionado" class="caixaFuncionalidades">
@@ -30,6 +30,7 @@
         const btn_c=[...document.querySelectorAll(".curso")]
         const cursos=["HTML","CSS","JavaScript","PHP","React","MySQL","RactNative"]
         const btnCursoSelecionado=document.getElementById("btnCursoSelecionado")
+        const btnRemoverCursoSelecionado=document.getElementById("btnRemoverCurso")
 
         cursos.map((elemento,chave)=>{
             const novoElemento=document.createElement("div")
@@ -49,21 +50,41 @@
             novoElemento.appendChild(comandos)
             caixaCursos.appendChild(novoElemento)
         })
-
-        btnCursoSelecionado.addEventListener("click",(event)=>{
-            const listRadios=[...document.querySelectorAll("input[type=radio]")]
-            const radioFilter=listRadios.filter((elemento,indice,array)=>{
+        const selecionarRadio=()=>{
+            const listRadios=[...document.querySelectorAll("input[type=radio]")]//array com todos os radios
+            const radioFilter=listRadios.filter((elemento,indice,array)=>{ // retorna o radio selecionado
                 return elemento.checked
             })
-            const radioSelecionado=radioFilter[0]
-            const cursoSelecionado=radioSelecionado.parentNode.previousSibling.textContent
+            return radioFilter[0] //indica o radio selecionado
 
-            alert(cursoSelecionado)
-            //console.log(listRadios)
-            //console.log(radioSelecionado)
-            //console.log(cursoSelecionado)
+        }
 
+        //adciona o evento no botão que confere o curso selecionado
+
+        btnCursoSelecionado.addEventListener("click",(event)=>{
+            const radioSelecionado=selecionarRadio() //chama a funçao para obter o radio selecionado
+           
+            if(radioSelecionado!=undefined){    //tratamento de erro
+                const cursoSelecionado=radioSelecionado.parentNode.previousSibling.textContent //pega o irmao anterior ao radio (o texto ao lado)
+                alert(cursoSelecionado)
+
+            }else{
+                alert("Selecione um Curso!!!!")
+            }
         })
+        btnRemoverCursoSelecionado.addEventListener("click",(event=>{
+            const radioSelecionado=selecionarRadio() //chama a funçao para obter o radio selecionado
+        
+            if(radioSelecionado!=undefined){//tratamento de erro
+                
+                const cursoSelecionado=radioSelecionado.parentNode.parentNode//pega a div completa 
+                cursoSelecionado.remove() //remove a div onde o radio está selecionado
+            }else{
+                alert("Selecione um curso!!!!")
+            }
+
+        }))
+
         
     </script>
     
