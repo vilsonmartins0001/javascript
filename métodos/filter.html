@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/estiloFilter.css">
+</head>
+<body>
+    <main>
+        <div id="caixaNovoFuncionalidades" class="caixa">
+            <div id="caixaNovoCurso" class="caixaFuncionalidades">
+               <label>Nome do Curso</label>
+               <input type="text" name="nomeCurso" id="nomeCurso">
+               <button id="btnAdicionarNovoCurso">Adicionar</button>
+            </div>
+
+            <div id="caixaRemoverCurso" class="caixaFuncionalidades">
+                <button id="btnRemoverCurso">Curso selecionado</button>
+            </div>
+
+            <div id="caixaCursoSelecionado" class="caixaFuncionalidades">
+                <button id="btnCursoSelecionado">Curso Selecionado</button>
+            </div>
+        </div>
+        <div id="caixaCursos" class="caixa"></div>
+    </main>
+    <script>
+        const caixaCursos=document.querySelector("#caixaCursos")
+        const btn_c=[...document.querySelectorAll(".curso")]
+        const cursos=["HTML","CSS","JavaScript","PHP","React","MySQL","RactNative"]
+        const btnCursoSelecionado=document.getElementById("btnCursoSelecionado")
+
+        cursos.map((elemento,chave)=>{
+            const novoElemento=document.createElement("div")
+            novoElemento.setAttribute("id","c"+chave)
+            novoElemento.setAttribute("class","curso c1")
+            novoElemento.innerHTML=elemento
+
+            const comandos=document.createElement("div")
+            comandos.setAttribute("class","comandos")
+
+            const rb=document.createElement("input")
+            rb.setAttribute("type","radio")
+            rb.setAttribute("name","rb_curso")
+
+
+            comandos.appendChild(rb)
+            novoElemento.appendChild(comandos)
+            caixaCursos.appendChild(novoElemento)
+        })
+
+        btnCursoSelecionado.addEventListener("click",(event)=>{
+            const listRadios=[...document.querySelectorAll("input[type=radio]")]
+            const radioFilter=listRadios.filter((elemento,indice,array)=>{
+                return elemento.checked
+            })
+            const radioSelecionado=radioFilter[0]
+            const cursoSelecionado=radioSelecionado.parentNode.previousSibling.textContent
+
+            alert(cursoSelecionado)
+            //console.log(listRadios)
+            //console.log(radioSelecionado)
+            //console.log(cursoSelecionado)
+
+        })
+        
+    </script>
+    
+</body>
+</html>
