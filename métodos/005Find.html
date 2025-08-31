@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find</title>
-    <link rel="stylesheet" href="estiloFinde.css">
+    <link rel="stylesheet" href="estiloFind.css">
 </head>
 <body>
     <div id="caixa_array" class="caixa verde">
@@ -14,14 +14,34 @@
     <div id="caixa_pesquisar" class="caixa azul">
         <label>Pesquisar por</label>
         <input type="text" name="txt_pesquisar" id="txt_pesquisar"/>
-        <button id="btnPesquisar">Pesquisar</button>
+        <button id="btn_Pesquisar">Pesquisar</button>
     </div>
     <div id="caixa_resultado" class="caixa vermelho">
         <p>Resultado:</p>
         <p id="resultado"></p>
     </div>
     <script>
-        
+        const p_array=document.getElementById("array")
+        const txt_pesquisar=document.getElementById("txt_pesquisar")
+        const btn_Pesquisar=document.getElementById("btn_Pesquisar")
+        const p_resultado=document.getElementById("resultado")
+
+        const elementos_array=["HTML","CSS","JavaScript","React"]
+        p_array.innerHTML="["+ elementos_array + "]"
+
+        btn_Pesquisar.addEventListener("click",(event)=>{
+           const ret=elementos_array.find((e,i)=>{ 
+            p_resultado.innerHTML="Valor não Encontrado!"
+                if(e.toUpperCase()==txt_pesquisar.value.toUpperCase()){ //pesquisa tanto Maiúscula quanto Minúscula
+                    p_resultado.innerHTML="Valor encontrado " + e + " na posição " + i
+                    return e
+                    }
+                })
+           console.log(ret)
+        })
+
+
+
     </script>
     
 </body>

@@ -16,14 +16,28 @@
 }
 .verde{
     border-color: rgb(20, 120, 23) !important;
-    background-color: rgb(220, 255, 225) !important;
+    background-color: rgb(213, 231, 216) !important;
 }
 .azul{
     border-color: rgb(20, 60, 120);
-    background-color: rgb(220, 255, 225) !important;
+    background-color: rgb(213, 231, 216) !important;
 
 }
 .vermelho{
     border-color: rgb(120, 20, 20);
-    background-color: rgb(220, 255, 225) !important;
+    background-color:rgb(213, 231, 216) !important;
+}
+button{
+    width: 150px;
+    height: 40px;
+    background-color: #025;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+}
+#caixa_pesquisar input{
+    padding: 5px;
+    border-radius: 5px;
+    width: 300px;
 }
