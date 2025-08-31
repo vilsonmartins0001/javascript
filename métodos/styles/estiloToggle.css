@@ -28,12 +28,13 @@ button{
     margin: 5px 0px;
     padding: 0px 10px;
     align-items: center;
+    cursor: pointer;
 }
 .selecionado
 {
-    background-color: #800 !important;
-    color: #fcc !important;
-    border-color: #f00 !important;
+    background-color: #025 !important;
+    color:#ffffff !important;
+    
 }
 .c1{
     background-color: #ffffff;
@@ -75,6 +76,8 @@ button{
 }
 #nomeCurso{
     border: 3px solid #eee;
+     border-radius: 5px;
+    
 }
 #nomeCurso:focus{
     background-color: #fceee0;

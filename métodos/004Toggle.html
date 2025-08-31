@@ -41,13 +41,28 @@
         const nomeCurso=document.getElementById("nomeCurso")
 
         let indice=0
+        //manter apenas um elemento selecionado
 
+        const tirarSelecao=()=>{
+            const cursosSelecionado=[...document.querySelectorAll(".selecionado")]
+            cursosSelecionado.map((el)=>{
+                el.classList.remove("selecionado")
+            })
+
+        }
+         const selecionarCurso=()=>{
+            const cursosSelecionado=[...document.querySelectorAll(".selecionado")]
+                return cursosSelecionado[0]
+            }
+           
+        //criar novo Elemento
         const AddNovoCurso=(curso)=>{
             const novoElemento=document.createElement("div")
             novoElemento.setAttribute("id","c"+indice)
             novoElemento.setAttribute("class","curso c1")
             novoElemento.innerHTML=curso
             novoElemento.addEventListener("click",(event)=>{
+                tirarSelecao()
                 event.target.classList.toggle("selecionado")
 
             })
@@ -70,20 +85,51 @@
         //adciona o evento no botão que confere o curso selecionado
 
         btnCursoSelecionado.addEventListener("click",(event)=>{
+
+        try{
+            alert("Curso Selecionado: "+ selecionarCurso().textContent)
+        }catch(ex){
+            alert("Selecione o Curso!")
+        }
            
         })
         //botão remove curso selecionado
         btnRemoverCursoSelecionado.addEventListener("click",(event=>{
-           
+            const cs=selecionarCurso()
+            if(cs!=undefined){
+                cs.remove()
+            }else{
+                alert("Selecione Um Curso!")
+            }
         }))
         //botao adiciona Antes
         btnAdicionarCursoAntes.addEventListener("click",(event)=>{
            
+          try{
+            if(nomeCurso.value!=""){
+                const novoCurso=AddNovoCurso(nomeCurso.value)
+                caixaCursos.insertBefore(novoCurso, selecionarCurso())
+            }else{
+                alert("Digite o nome do Curso!")
+            }
+          }catch(ex){
+                alert("Selecione um Curso!")
+          }
 
         })
         //botão adiciona Depois
         btnAdicionarCursoDepois.addEventListener("click",(event)=>{
-           
+             try{
+            if(nomeCurso.value!=""){
+                const novoCurso=AddNovoCurso(nomeCurso.value)
+                caixaCursos.insertBefore(novoCurso, selecionarCurso().nextSibling)
+            }else{
+                alert("Digite o nome do Curso!")
+            }
+          }catch(ex){
+                alert("Selecione um Curso!")
+          }
+
 
         })
 
