@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find</title>
+    <link rel="stylesheet" href="estiloFind.css">
+</head>
+    <div id="caixa_array" class="caixa verde">
+        <p>Array:</p>
+        <p id="array"></p>
+    </div>
+    <div id="caixa_pesquisar" class="caixa azul">
+        <button id="btn_Verificar">Verificar</button>
+    </div>
+    <div id="caixa_resultado" class="caixa vermelho">
+        <p>Resultado:</p>
+        <p id="resultado"></p>
+    </div> 
+
+    <!------------------------O método SOME ao encontrar pelo menos um resultado equivalente a pesquisa -------------------->
+
+    <script>
+        const p_array=document.getElementById("array")
+        const btn_Verificar=document.getElementById("btn_Verificar")
+        const p_resultado=document.getElementById("resultado")
+
+        const elementos_array=[9,5,7,11,13,15,19]
+        p_array.innerHTML="["+ elementos_array + "]"
+
+        btn_Verificar.addEventListener("click",(event)=>{  
+            
+            const ret=elementos_array.some((el,i)=>{
+                if(el <18){
+                     p_resultado.innerHTML="Array não Conforme na posição " 
+                }
+                return el>=18
+            })
+            if(ret){
+                p_resultado.innerHTML="OK!"
+            }
+        })
+
+
+
+    </script>
+    
+</body>
+</html>

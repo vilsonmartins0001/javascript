@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find</title>
+    <link rel="stylesheet" href="estiloFind.css">
+</head>
+    <div id="caixa_array" class="caixa verde">
+        <p>Array:</p>
+        <p id="array"></p>
+    </div>
+    <div id="caixa_pesquisar" class="caixa azul">
+        <button id="btn_Reduzir">Reduzir</button>
+    </div>
+    <div id="caixa_resultado" class="caixa vermelho">
+        <p>Resultado:</p>
+        <p id="resultado"></p>
+    </div> 
+
+    <!------------------------O método REDUCE -------------------->
+
+    <script>
+        const p_array=document.getElementById("array")
+        const btn_Reduzir=document.getElementById("btn_Reduzir")
+        const p_resultado=document.getElementById("resultado")
+
+       const texto="YouTube"
+       p_array.innerHTML=texto
+
+       const it_texto=texto[Symbol.iterator]()
+        
+       
+
+        btn_Reduzir.addEventListener("click",(event)=>{  
+            p_resultado.innerHTML=it_texto.next().value
+            
+            //console.log(it_elementos_array.next().value)
+        })
+    </script>
+    
+</body>
+</html>

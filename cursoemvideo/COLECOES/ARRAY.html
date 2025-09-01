@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .caixa{
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(230, 229, 229);
+            border: 3px solid #000;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+           
+        }
+    </style>
+</head>
+<body>
+    <div id="caixa" class="caixa"></div>
+    
+    
+    <script>
+        const caixa=document.querySelector(".caixa")
+
+        let cores=["Azul","verde","amarelo",["claro","escuro","medio"]]
+        let cursos=["HTML","CSS","JavaScript",cores]
+
+        console.log(cursos[2][1][0])
+        
+        cursos.push("C++") //adciona elemento no final do array
+        cursos.push("PHP")
+        cursos.pop()//retira o ultimo elemento do array
+        cursos.unshift("Python") //adciona no inicio do array
+        cursos.shift()//retira o primeiro elemento do array
+
+
+        cursos.map((el)=>{ //para cada elemento
+            let p=document.createElement("p")
+            p.innerHTML=el
+            caixa.appendChild(p)
+        })
+        
+
+    </script>
+    
+</body>
+</html>

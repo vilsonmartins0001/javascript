@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find</title>
+    <link rel="stylesheet" href="estiloFind.css">
+</head>
+    <div id="caixa_array" class="caixa verde">
+        <p>Array:</p>
+        <p id="array"></p>
+    </div>
+    <div id="caixa_pesquisar" class="caixa azul">
+        <button id="btn_Reduzir">Reduzir</button>
+    </div>
+    <div id="caixa_resultado" class="caixa vermelho">
+        <p>Resultado:</p>
+        <p id="resultado"></p>
+    </div> 
+
+    <!------------------------O método REDUCE -------------------->
+
+    <script>
+        const p_array=document.getElementById("array")
+        const btn_Reduzir=document.getElementById("btn_Reduzir")
+        const p_resultado=document.getElementById("resultado")
+
+        const elementos_array=[1,2,3,4,5]
+        let ant=[]
+        let atu=[]
+        let dobro=[]
+
+        p_array.innerHTML="["+ elementos_array + "]"
+
+        btn_Reduzir.addEventListener("click",(event)=>{  
+            
+            p_resultado.innerHTML=elementos_array.reduce((anterior,atual,pos)=>{
+                
+                ant.push(anterior)
+                atu.push(atual)
+                dobro.push(atual*2)
+                return atual+anterior
+
+            }) 
+            p_resultado.innerHTML+= "<br/> anterior: " + ant + "<br/> atual: " + atu + "<br/> dobro: " + dobro
+        })
+
+
+
+    </script>
+    
+</body>
+</html>

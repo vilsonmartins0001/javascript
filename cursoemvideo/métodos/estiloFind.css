@@ -20,12 +20,12 @@
 }
 .azul{
     border-color: rgb(20, 60, 120);
-    background-color: rgb(213, 231, 216) !important;
+    background-color: rgb(198, 215, 223) !important;
 
 }
 .vermelho{
     border-color: rgb(120, 20, 20);
-    background-color:rgb(213, 231, 216) !important;
+    background-color:rgb(240, 208, 207) !important;
 }
 button{
     width: 150px;
