@@ -16,6 +16,15 @@
             text-align: center;
            
         }
+        .btnSinais{
+            width: 30px;
+            height: 30px;
+            margin: 2px;
+            background-color: rgb(136, 179, 243);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.411);
+        }
         .btn{
             width: 30px;
             height: 30px;
@@ -45,59 +54,84 @@
            <input type="text" name="tx" class="inpt" id="tx_02">
         </div>
         <div>
-            <label for="" id="visor01">Resultado</label>
-           <input type="text" name="tx" class="inpt" id="tx_02">
+            <label for="" id="visor01">Resultado:</label>
+            <input type="tel" value="0" name="res" id="resultado" readonly style="cursor: not-allowed ;">
+          
+        </div>
+        <div>
+            <button class="btnSinais" id="mais">+</button>
+            <button class="btnSinais" id="menos">-</button>
+            <button class="btnSinais" id="multiplicar">x</button>
+            <button class="btnSinais" id="divisao">/</button>
         </div>
 
-      
-        <button class="btn" id="mais">+</button>
-        <button class="btn" id="menos">-</button>
-        <button class="btn" id="multiplicar">x</button>
-        <button class="btn" id="divisao">/</button>
-
-        <button class="btn" id="0">0</button>
-        <button class="btn" id="1">1</button>
-        <button class="btn" id="2">2</button>
-        <button class="btn" id="3">3</button>
-        <button class="btn" id="4">4</button>
-        <button class="btn" id="5">5</button>
-        <button class="btn" id="6">6</button>
-        <button class="btn" id="7">7</button>
-        <button class="btn" id="8">8</button>
-        <button class="btn" id="9">9</button>
+         <div>
+            <button class="btn" id="7">7</button>
+            <button class="btn" id="8">8</button>
+            <button class="btn" id="9">9</button>
+        </div>
        
+        <div>
+            <button class="btn" id="4">4</button>
+            <button class="btn" id="5">5</button>
+            <button class="btn" id="6">6</button>
+        </div>
+        <div>
+            <button class="btn" id="1">1</button>
+            <button class="btn" id="2">2</button>
+            <button class="btn" id="3">3</button>
+        </div>
+       <div><button class="btn" id="0">0</button></div>
 
 
     </div>
     
     
     <script>
-        let valores=[1,2]
+
+       const btn_soma=document.getElementById("mais")
+       const btn_subtracao=document.getElementById("menos")
+       const btn_multiplicacao=document.getElementById("multiplicar")
+       const btn_divisao=document.getElementById("divisao")
+        const resultado=document.querySelector("#resultado")
+
         const op=[
-        (val)=>{
-            let res=0 //inicia com 0
-
-            for (v of val){ //adciona os valores do array
-                res+=v
-            }
-            return res
+        ()=>{
+            const val=[document.getElementById("tx_01").value,document.getElementById("tx_02").value]
+            resultado.value=Number(val[0])+Number(val[1])
         },
-         (val)=>{
-            let res=1
-            for (v of val){
-                res*=v
-            }
-            return res
+        ()=>{
+            const val=[document.getElementById("tx_01").value,document.getElementById("tx_02").value]
+            resultado.value=Number(val[0])-Number(val[1])
         },
-        (val)=>{
-            for(v of val){
-                console.log(v)
-            }
+        ()=>{
+            const val=[document.getElementById("tx_01").value,document.getElementById("tx_02").value]
+            resultado.value=Number(val[0])*Number(val[1])
+        },
+        ()=>{
+            const val=[document.getElementById("tx_01").value,document.getElementById("tx_02").value]
+            resultado.value=Number(val[0])/Number(val[1])
         }
-
         ]
+     
+        btn_soma.addEventListener("click",op[0])
+        btn_subtracao.addEventListener("click",()=>{
+            op[1]()
+        })
+        btn_multiplicacao.addEventListener("click",()=>{
+            op[2]()
+        })
+        btn_divisao.addEventListener("click",op[3])
+
         
-        
+
+
+
+
+       
+       
+    
+
 
     </script>
     
