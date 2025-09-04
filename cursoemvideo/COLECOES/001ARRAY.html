@@ -95,9 +95,9 @@
        const btn_divisao=document.getElementById("divisao")
         const resultado=document.querySelector("#resultado")
         const num=[...document.querySelectorAll(".btn")]
-        console.log(num[3].value)
         const caixa01=0
-        const caixa02=02
+        const caixa02=0
+       
 
         const op=[
         ()=>{
@@ -117,6 +117,16 @@
             resultado.value=Number(val[0])/Number(val[1])
         }
         ]
+
+          num.map(botao=>{
+            botao.addEventListener("click",() =>{
+             
+              if(document.activeElement===caixa01)
+              val[0].innerHTML+=botao.innerHTML
+            
+
+            })
+         })
      
         btn_soma.addEventListener("click",op[0])
         btn_subtracao.addEventListener("click",()=>{
