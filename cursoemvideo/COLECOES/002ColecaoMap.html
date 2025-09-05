@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .caixa{
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(230, 229, 229);
+            border: 3px solid #000;
+            border-radius: 10px;
+            width: 300px;
+            height: 40px;
+            text-align: center;
+           
+        }
+    </style>
+</head>
+<body>
+    <div id="caixa" class="caixa"></div>
+    
+    
+    <script>
+
+        // ------------------- A coleção Map possue chave e valor ------------------
+
+        
+        const caixa=document.querySelector(".caixa")
+
+       let mapa=new Map() //declarei a coleção Map
+       el=2
+       mapa.set(1,"JavaScript")
+       mapa.set(2,"CFB Cursos")
+       mapa.set (3,100)
+
+
+       let pes=3
+       let res=""
+
+       if( mapa.has(pes)){
+        res="A chave existe na coleção!"
+       }else{
+
+           res="A chave Não existe na coleção!"
+       }
+       caixa.innerHTML=res
+       
+
+    </script>
+    
+</body>
+</html>
