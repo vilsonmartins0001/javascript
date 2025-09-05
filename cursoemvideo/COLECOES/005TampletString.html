@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .caixa{
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(230, 229, 229);
+            border: 3px solid #000;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+           
+        }
+    </style>
+</head>
+<body>
+    <div id="caixa" class="caixa"></div>
+    
+    
+    <script>
+
+        //----------------------  tamplat String------
+
+        const caixa=document.querySelector(".caixa")
+
+        const carros=["Polo", "Golf","T-Cross","HRV"]
+        const nome="Vilson"
+        const canal="Vlog"
+        const assunto="Política"
+        //const frase= "este é o " + canal + " do " + nome + " que fala sobre " + assunto
+        //usando o cifrão e chaves conseguimos  concatenar Strings com variaveis
+        
+        const frase=`Este é o ${canal} do ${nome} que fala sobre ${assunto}`
+
+        caixa.innerHTML=frase
+        
+       
+
+    </script>
+    
+</body>
+</html>
