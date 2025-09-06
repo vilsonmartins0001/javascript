@@ -12,6 +12,7 @@
             border: 3px solid #000;
             border-radius: 10px;
             width: 300px;
+            height: 100px;
             text-align: center;
            
         }
@@ -25,16 +26,30 @@
 
         //----------------------  tamplat String------
 
-        const caixa=document.querySelector(".caixa")
+        const caixa=document.querySelector("#caixa")
 
-        const carros=["Polo", "Golf","T-Cross","HRV"]
+        const carros=["Polo","Golf","T-Cross","HRV"]
+        
+        
+       const ol=`<ol>`
+
+            carros.map((el)=>{
+
+                ol+=`<li>${el}</li>`
+
+            })
+            ol+`</ol>`
+            caixa.innerHTML=ol
+        
+
         const nome="Vilson"
         const canal="Vlog"
         const assunto="Política"
         //const frase= "este é o " + canal + " do " + nome + " que fala sobre " + assunto
         //usando o cifrão e chaves conseguimos  concatenar Strings com variaveis
         
-        const frase=`Este é o ${canal} do ${nome} que fala sobre ${assunto}`
+        const frase=`Este é <br/>
+        o ${canal} do ${nome} que fala sobre ${assunto}`
 
         caixa.innerHTML=frase
         

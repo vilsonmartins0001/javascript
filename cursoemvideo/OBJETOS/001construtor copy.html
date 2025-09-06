@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+       class Pessoa{
+
+        constructor(){
+            this.nome="Vilson"
+            this.idade="43"
+            this.sexo="Masculino"
+            this.altura="1.72"
+
+        }
+       }
+        let p1= new Pessoa()
+      
+        class Carros{
+        constructor(pmarca){     //construtor com parâmetros
+
+            this.marca=pmarca
+        }
+       }
+       
+       let carro01= new Carros("fusca")
+       let carro02= new Carros("Gol")
+       let carro03= new Carros("Parati")
+       let carro04= new Carros("Palio")
+      
+       console.log(carro01.marca,carro02.marca)
+
+      
+
+       console.log(`Meu nome é: ${p1.nome} tenho ${p1.idade} anos e ${p1.altura} de altura e sou do sexo ${p1.sexo}`)
+
+
+    </script>
+    
+</body>
+</html>

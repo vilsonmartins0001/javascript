@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 10px;
+            pad: 10px;
+        }
+         #caixa{
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(230, 229, 229);
+            border: 1px solid #000;
+            border-radius: 10px;
+            width: 400px;
+            padding: 20px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.377);
+            border: none;
+            text-align: left;
+           
+        }
+         #resultado{
+            display:block;
+            flex-direction: column 2;
+            background-color: rgb(230, 229, 229);
+            border: 1px solid #000;
+            border-radius: 10px;
+            width: 400px;
+            padding: 5px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.377);
+            border: none;
+            text-align: left;
+             margin: 5px;
+           
+        }
+        
+        input{
+            border: none;
+            margin: 5px;
+            width: 250px;
+            height: 30px;
+            border-radius: 5px;
+             box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.377);
+        }
+        button{
+            border: none;
+            background-color: rgb(140, 188, 233);
+            margin: 5px;
+            width: 258px;
+            height: 40px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.377);
+        
+        }
+        .pessoa{
+           
+            border: 1px solid black;
+            margin: 5px;
+            width: 150px;
+            height: 50px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.377);
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="caixa">
+        <label for="">Nome:</label>
+        <input type="text" name="" id="nome">
+        <label for="">Idade:</label>
+        <input type="text" name="" id="idade">
+        <button id="add">Adcionar</button>
+    </div>
+    <div id="resultado" class="resultado">
+
+    </div>
+
+    <script>
+        function Pessoa(pnome,pidade){ //--------------------criando a Função com construtor--------------
+           
+            this.nome=pnome,  //as propriedades precisam ser separadas por ","
+            this.idade=pidade,
+
+            this.getNome=function(){ // tem que usar o "this" antes do método
+                return this.nome
+            },
+            this.getIdade=()=>{           //usando aero function
+                return this.idade
+            },
+            this.setNome=function(pnome){
+                this.nome=pnome
+            },
+            this.setIdade=function(pidade){ //usando aero function
+                this.idade=pidade
+            }
+         
+        }
+
+
+    const btn_add=document.querySelector("#add")
+    const caixaResultado=document.querySelector(".resultado")
+    
+    let pessoas=[]          //array de armazenamento
+
+    const addPessoa=()=>{
+        
+        pessoas.map((p)=>{
+            const div=document.createElement("div")
+            div.setAttribute("class","pessoa")
+            div.innerHTML=`Nome: ${p.getNome()}<br/>Idade: ${p.getIdade()}`
+            caixaResultado.appendChild(div)
+        })
+
+    }
+    btn_add.addEventListener("click",(event)=>{
+        const nome=document.querySelector("#nome")          //armazena o conteudo do input
+        const idade=document.querySelector("#idade")        //armazena o conteudo do input
+        const p=new Pessoa(nome.value,idade.value)          //cria um objeto da classe "Pessoa"
+        pessoas.push(p)                                     //armazena no array
+                                        
+        //-----------------------------------------------------------------
+        nome.value=""   //limpa o input
+        idade.value=""  //limpa o input
+        nome.focus()    //foca no input nome
+
+         addPessoa()    //após o armazenamento das informações no array a função passa os dados par o HTML 
+    })
+    
+    
+
+
+      
+    </script>
+    
+</body>
+</html>
