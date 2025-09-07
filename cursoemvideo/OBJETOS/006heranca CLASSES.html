@@ -12,17 +12,20 @@
             box-sizing: border-box;
             font-size: large;
         }
-        .carros{
+        .div_Carros{
             
             display: flex;
             flex-direction: column;
             width: 100%;
             border: 2px solid black;
             border-radius: 5px;
+            padding: 5px;
+            background-color: #a0a3a2;
 
         }
         .carro{
             border: 3px #008 solid;
+            background-color: #bef1fa;
             padding: 5px;
             border-radius: 5px;
             display: flex;
@@ -59,7 +62,7 @@
        </div>
        <div class="campoForm">
             <label for="f_portas">Portas</label>
-       <input type="number" name="f_portas" id="f_portas" disabled value="0">
+       <input type="number" name="f_portas" id="f_portas" value="0">
        </div>
        <div class="campoForm">
             <label for="f_blindagem">Blindagem</label>
@@ -77,14 +80,21 @@
             <div class="radio">
                 <input type="radio" name="f_tipo" id="f_tipoNormal" value="n" checked/>Normal
             </div>
+             <div class="radio">
+                <input type="radio" name="f_tipo" id="f_tipoUtilitario" value="u" />Utlitario
+            </div>
        </div>
        <div class="campoForm">
             <button id="btn_addCarro">Adicionar</button>
        </div>
+       <div id="div_Carros" class="div_Carros">
+
+       </div>
+
     </div>
     <script>
-        class Carro{        //Classe PAI / Base
-
+        //============================================= Classe PAI / Base =============================
+        class Carro{        
             constructor(c_nome,c_portas){
                 this.nome=c_nome
                 this.portas=c_portas
@@ -102,43 +112,8 @@
                 this.cor=c_cor
             }
         }
-//============================= Armazenando os elementos do documento ==========================       
-            
-        const f_tipomilitar=document.querySelector("#f_tipomilitar")
-        const f_tipoNormal=document.querySelector("#f_tipoNormal")
-        const f_blindagem=document.querySelector("#f_blindagem")
-        const f_municao=document.querySelector("#f_municao")
-        const carros=document.querySelector("#carros")
-        const btn_addCarro=document.querySelector("#btn_addCarro")
-        //---------------------------------------------------------------------------------------------
 
-        let a_carros=[]       //Array carros
-
-        f_tipomilitar.addEventListener("click",(event)=>{
-            f_blindagem.removeAttribute("disabled")
-            f_municao.removeAttribute("disabled")
-        })
-        f_tipoNormal.addEventListener("click",(event)=>{
-                f_blindagem.value=0
-                f_municao.value=0
-                f_blindagem.setAttribute("disabled","disabled")
-                f_municao.setAttribute("disabled","disabled")
-            
-        })
-        //------------------------------- Função Gerenciar Carros ----------------------------------
-        const gerenciarExibicaoCarros=()=>{
-            carros.innerHTML=""
-            a_carros.map((car)=>{
-                const divCarro=document.createElement("div")
-                divCarro.setAttribute("class","carro")
-                divCarro.innerHTML=c.nome
-
-            })
-
-        }
-
-
-        //================================ Definindo a classe com herança ===========================
+         //================================ Definindo a classe com herança ===========================
 
         class Militar extends Carro{    //classe criada com herança da classe "Carro" / FILHO
 
@@ -153,7 +128,6 @@
                 this.municao--
                }
             }
-
         } 
         class Utlitario extends Carro{
             constructor(c_nome,c_portas,c_lugares){
@@ -162,10 +136,84 @@
                 this.setCor("Prata")
                 this.ligar()
                 this.velocidade=90
-
-
             }
         }
+
+        //============================= Armazenando os elementos do documento ==========================       
+            
+        const f_tipomilitar=document.querySelector("#f_tipomilitar")
+        const f_tipoNormal=document.querySelector("#f_tipoNormal")
+        const f_tipoUtilitario=document.querySelector("#f_tipoUtilitario")
+        const f_blindagem=document.querySelector("#f_blindagem")
+        const f_municao=document.querySelector("#f_municao")
+        const f_nome=document.querySelector("#f_nome")
+        const f_portas=document.querySelector("#f_portas")
+        const div_Carros=document.querySelector("#div_Carros")
+        const btn_addCarro=document.querySelector("#btn_addCarro")
+        //---------------------------------------------------------------------------------------------
+
+        let a_carros=[]       //Array carros
+
+        f_tipomilitar.addEventListener("click",(event)=>{
+            f_nome.value=""
+            f_portas.value=0                        //reset
+            f_blindagem.value=0
+            f_municao.value=0
+            //-----------------------------------------------------------
+            f_blindagem.removeAttribute("disabled")
+            f_municao.removeAttribute("disabled")
+        })
+
+        f_tipoNormal.addEventListener("click",(event)=>{
+            f_nome.value=""
+            f_portas.value=0                        //reset
+            f_blindagem.value=0
+            f_municao.value=0
+             //-----------------------------------------------------------
+            f_blindagem.setAttribute("disabled","disabled")
+            f_municao.setAttribute("disabled","disabled")
+        })
+
+        f_tipoUtilitario.addEventListener("click",(event)=>{
+            f_nome.value=""
+            f_portas.value=0                        //reset
+            f_blindagem.value=0
+            f_municao.value=0
+             //-----------------------------------------------------------
+            f_blindagem.setAttribute("disabled","disabled")
+            f_municao.setAttribute("disabled","disabled")
+        })
+
+        //==================================== Função Gerenciar Carros =======================================
+        const gerenciarExibicaoCarros=()=>{
+            div_Carros.innerHTML=""
+            a_carros.map((car)=>{
+                const carro=document.createElement("div")
+                carro.setAttribute("class","carro")
+                carro.innerHTML=`Nome: ${car.nome} </br> Portas: ${car.portas}</br> Lugares: ${car.lugares}</br> Cor: ${car.cor}</br> Blindagem: ${car.blindagem}</br> Munição: ${car.municao}`
+                div_Carros.appendChild(carro)  //cria um elemeno carros na div recem criada
+
+            })
+        }
+
+        //================================= Cria o evento no botão de adicionar Carro ==========================
+
+        btn_addCarro.addEventListener("click",(event)=>{
+            if(f_tipoNormal.checked){
+                const n_car= new Carro(f_nome.value,f_portas.value)
+                a_carros.push(n_car)
+            }else if(f_tipoUtilitario.checked){
+                const n_car=new Utlitario(f_nome.value,f_portas.value)
+                a_carros.push(n_car)
+            }else{
+                const n_car=new Militar(f_nome.value,f_portas.value)
+                a_carros.push(n_car)
+            }
+            gerenciarExibicaoCarros()
+        })
+
+
+       
         const c1=new Carro("Corolla",4) //class Pai
         const c3=new Utlitario("Santa Fé",4,7)
 
@@ -189,8 +237,7 @@
         console.log(`Ligado: ${(c2.ligado?"Sim":"Não")}`)
         console.log(`Velocidade: ${c2.velocidade} km/h`)
         console.log(`===========================`)
-       
-
+      
     </script>
 </body>
 </html>
