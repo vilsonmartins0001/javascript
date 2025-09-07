@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>herança</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            border: none;
+            box-sizing: border-box;
+            font-size: large;
+        }
+        .carros{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border: 2px solid black;
+            border-radius: 5px;
+
+        }
+        .carro{
+            border: 3px #008 solid;
+            padding: 5px;
+            border-radius: 5px;
+            display: flex;
+            width: 200px;
+        }
+        input{
+            border: 3px rgb(114, 114, 114) solid;
+            padding: 5px;
+            border-radius: 5px;
+            display: flex;
+            width: 200px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <input class="carros">
+       <label for="nome">Nome</label>
+       <input type="text" name="nome" id="inome">
+       <label for="portas">Portas</label>
+       <input type="text" name="portas" id="iportas">
+       <label for="blindagem">Blindagem</label>
+       <input type="text" name="blindagem" id="iblindagem">
+       <label for="municao">Munição</label>
+       <input type="text" name="municao" id="imunicao">
+       <label for="tipo">Tipo</label>
+       <input type="text" name="tipo" id="itipo">
+       <p><label for="militar">Militar<input type="radio" name="militar" id="i_militar"></input></label></p>
+       
+       <input type="radio" name="militar" id="i_militar">
+       
+
+    </div>
+    <script>
+        class Carro{        //Classe PAI / Base
+
+            constructor(c_nome,c_portas){
+                this.nome=c_nome
+                this.portas=c_portas
+                this.ligado=false
+                this.velocidade=0
+                this.cor=undefined
+            }
+            ligar=function(){
+                this.ligado=true
+            }
+            desligar=function(){
+                this.ligado=false
+            }
+            setCor=function(c_cor){
+                this.cor=c_cor
+            }
+        }
+        //================================ Definindo a classe com herança ===========================
+        
+        class Militar extends Carro{    //classe criada com herança da classe "Carro" / FILHO
+
+            constructor(c_nome,c_portas,c_blindagem,c_municao){
+                super(c_nome,c_portas)
+                this.blindagem=c_blindagem
+                this.municao=c_municao
+                this.setCor("verde")
+            }
+            atirar=function(){
+               if(municao>0){
+                this.municao--
+               }
+            }
+
+        } 
+        class Utlitario extends Carro{
+            constructor(c_nome,c_portas,c_lugares){
+                super(c_nome,c_portas,)
+                this.lugares=c_lugares
+                this.setCor("Prata")
+                this.ligar()
+                this.velocidade=90
+
+
+            }
+        }
+        const c1=new Carro("Corolla",4) //class Pai
+        const c3=new Utlitario("Santa Fé",4,7)
+
+        c1.ligar()
+        c1.velocidade=130
+        c1.setCor("Vermelho")
+        console.log(`Nome: ${c1.nome}`)
+        console.log(`Portas: ${c1.portas}`)
+        console.log(`Cor: ${c1.cor}`)
+        console.log(`Ligado: ${(c1.ligado?"Sim":"Não")}`)
+        console.log(`Velocidade: ${c1.velocidade} km/h`)
+        console.log(`===========================`)
+        
+        const c2=new Militar("Tanque",1,100,50) //class Filho
+
+        console.log(`Nome: ${c2.nome}`)
+        console.log(`Portas: ${c2.portas}`)
+        console.log(`Blindagem: ${c2.blindagem}`)
+        console.log(`Munição: ${c2.municao}`)
+        console.log(`Cor: ${c2.cor}`)
+        console.log(`Ligado: ${(c2.ligado?"Sim":"Não")}`)
+        console.log(`Velocidade: ${c2.velocidade} km/h`)
+        console.log(`===========================`)
+        console.log(`Nome: ${c3.nome}`)
+        console.log(`Portas: ${c3.portas}`)
+        console.log(`Lugares: ${c3.lugares}`)
+        console.log(`Cor: ${c3.cor}`)
+        console.log(`Ligado: ${(c3.ligado?"Sim":"Não")}`)
+        console.log(`Velocidade: ${c3.velocidade} km/h`)
+        console.log(`===========================`)
+
+    </script>
+</body>
+</html>

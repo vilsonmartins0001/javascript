@@ -87,7 +87,7 @@
         const caixaResultado=document.querySelector("#resultado")
         const btn_add=document.querySelector("#add")
 
-        let pessoas=[]
+        
 
         const Pessoa={
             nome,
@@ -106,13 +106,14 @@
             }
 
         }
-
+        let pessoas=[]
+        
         const addPessoa=()=>{
             caixaResultado.innerHTML=""
-            pessoas.map((elarray)=>{
+            pessoas.map((pA)=>{
                 const divPessoa=document.createElement("div")
                 divPessoa.setAttribute("class","pessoa")
-                divPessoa.innerHTML=`Nome: ${elarray.getNome()} <br/> Idade: ${elarray.getIdade()}`
+                divPessoa.innerHTML=`Nome: ${pA.getNome()} <br/> Idade: ${pA.getIdade()}`
                 caixaResultado.appendChild(divPessoa)
             })
         }
