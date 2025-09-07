@@ -13,6 +13,7 @@
             font-size: large;
         }
         .carros{
+            
             display: flex;
             flex-direction: column;
             width: 100%;
@@ -27,34 +28,59 @@
             display: flex;
             width: 200px;
         }
-        input{
-            border: 3px rgb(114, 114, 114) solid;
+        .campoForm{
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            margin-bottom: 10px;
+        }
+        .campoForm input{
+            background-color: #eee;
             padding: 5px;
             border-radius: 5px;
-            display: flex;
-            width: 200px;
+            border: 1px solid #000;
 
+        }
+        .campoForm button{
+            background-color: #888;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
     </style>
 </head>
 <body>
-    <input class="carros">
-       <label for="nome">Nome</label>
-       <input type="text" name="nome" id="inome">
-       <label for="portas">Portas</label>
-       <input type="text" name="portas" id="iportas">
-       <label for="blindagem">Blindagem</label>
-       <input type="text" name="blindagem" id="iblindagem">
-       <label for="municao">Munição</label>
-       <input type="text" name="municao" id="imunicao">
-       <label for="tipo">Tipo</label>
-       <input type="text" name="tipo" id="itipo">
-       <p><label for="militar">Militar<input type="radio" name="militar" id="i_militar"></input></label></p>
-       
-       <input type="radio" name="militar" id="i_militar">
-       
-
+    <div id="criarCarro" class="criarCarro">
+       <div class="campoForm">
+           <label for="f_nome">Nome</label>
+           <input type="text" name="f_nome" id="f_nome">
+       </div>
+       <div class="campoForm">
+            <label for="f_portas">Portas</label>
+       <input type="number" name="f_portas" id="f_portas" disabled value="0">
+       </div>
+       <div class="campoForm">
+            <label for="f_blindagem">Blindagem</label>
+            <input type="number" name="f_blindagem" id="f_blindagem" disabled value="0">
+       </div>
+       <div class="campoForm">
+            <label for="f_municao">Munição</label>
+            <input type="number" name="f_municao" id="f_municao" disabled value="0">
+       </div>
+       <div class="campoForm">
+            <label>Tipo</label>
+            <div class="radio">
+                <input type="radio" name="f_tipo" id="f_tipomilitar" value="m"/>Militar
+            </div>
+            <div class="radio">
+                <input type="radio" name="f_tipo" id="f_tipoNormal" value="n" checked/>Normal
+            </div>
+       </div>
+       <div class="campoForm">
+            <button id="btn_addCarro">Adicionar</button>
+       </div>
     </div>
     <script>
         class Carro{        //Classe PAI / Base
@@ -76,8 +102,44 @@
                 this.cor=c_cor
             }
         }
+//============================= Armazenando os elementos do documento ==========================       
+            
+        const f_tipomilitar=document.querySelector("#f_tipomilitar")
+        const f_tipoNormal=document.querySelector("#f_tipoNormal")
+        const f_blindagem=document.querySelector("#f_blindagem")
+        const f_municao=document.querySelector("#f_municao")
+        const carros=document.querySelector("#carros")
+        const btn_addCarro=document.querySelector("#btn_addCarro")
+        //---------------------------------------------------------------------------------------------
+
+        let a_carros=[]       //Array carros
+
+        f_tipomilitar.addEventListener("click",(event)=>{
+            f_blindagem.removeAttribute("disabled")
+            f_municao.removeAttribute("disabled")
+        })
+        f_tipoNormal.addEventListener("click",(event)=>{
+                f_blindagem.value=0
+                f_municao.value=0
+                f_blindagem.setAttribute("disabled","disabled")
+                f_municao.setAttribute("disabled","disabled")
+            
+        })
+        //------------------------------- Função Gerenciar Carros ----------------------------------
+        const gerenciarExibicaoCarros=()=>{
+            carros.innerHTML=""
+            a_carros.map((car)=>{
+                const divCarro=document.createElement("div")
+                divCarro.setAttribute("class","carro")
+                divCarro.innerHTML=c.nome
+
+            })
+
+        }
+
+
         //================================ Definindo a classe com herança ===========================
-        
+
         class Militar extends Carro{    //classe criada com herança da classe "Carro" / FILHO
 
             constructor(c_nome,c_portas,c_blindagem,c_municao){
@@ -127,13 +189,7 @@
         console.log(`Ligado: ${(c2.ligado?"Sim":"Não")}`)
         console.log(`Velocidade: ${c2.velocidade} km/h`)
         console.log(`===========================`)
-        console.log(`Nome: ${c3.nome}`)
-        console.log(`Portas: ${c3.portas}`)
-        console.log(`Lugares: ${c3.lugares}`)
-        console.log(`Cor: ${c3.cor}`)
-        console.log(`Ligado: ${(c3.ligado?"Sim":"Não")}`)
-        console.log(`Velocidade: ${c3.velocidade} km/h`)
-        console.log(`===========================`)
+       
 
     </script>
 </body>
