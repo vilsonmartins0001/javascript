@@ -15,7 +15,6 @@
         .div_Carros{
             
             display: flex;
-            flex-direction: column;
             width: 100%;
             border: 2px solid black;
             border-radius: 5px;
@@ -29,6 +28,7 @@
             padding: 5px;
             border-radius: 5px;
             display: flex;
+            flex-direction: column;
             width: 200px;
         }
         .campoForm{
@@ -50,6 +50,15 @@
             padding: 5px;
             border-radius: 5px;
             cursor: pointer;
+            margin: 5px;
+        }
+        #btn_remover{
+            background-color: #913ef0;
+            color: #eee;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 2px;
         }
 
     </style>
@@ -150,9 +159,18 @@
         const f_portas=document.querySelector("#f_portas")
         const div_Carros=document.querySelector("#div_Carros")
         const btn_addCarro=document.querySelector("#btn_addCarro")
+        
         //---------------------------------------------------------------------------------------------
 
         let a_carros=[]       //Array carros
+
+        const removerCarro=(car_A_remover)=>{ 
+
+            a_carros=a_carros.filter((car)=>{ //faz a filtragem para identificar o carro a ser removido
+                return car.nome!=car_A_remover
+            })
+        }
+       
 
         f_tipomilitar.addEventListener("click",(event)=>{
             f_nome.value=""
@@ -170,6 +188,7 @@
             f_blindagem.value=0
             f_municao.value=0
              //-----------------------------------------------------------
+
             f_blindagem.setAttribute("disabled","disabled")
             f_municao.setAttribute("disabled","disabled")
         })
@@ -180,6 +199,7 @@
             f_blindagem.value=0
             f_municao.value=0
              //-----------------------------------------------------------
+
             f_blindagem.setAttribute("disabled","disabled")
             f_municao.setAttribute("disabled","disabled")
         })
@@ -188,11 +208,25 @@
         const gerenciarExibicaoCarros=()=>{
             div_Carros.innerHTML=""
             a_carros.map((car)=>{
+
                 const carro=document.createElement("div")
                 carro.setAttribute("class","carro")
+                carro.setAttribute("data-nome",car.nome)
                 carro.innerHTML=`Nome: ${car.nome} </br> Portas: ${car.portas}</br> Lugares: ${car.lugares}</br> Cor: ${car.cor}</br> Blindagem: ${car.blindagem}</br> Munição: ${car.municao}`
                 div_Carros.appendChild(carro)  //cria um elemeno carros na div recem criada
 
+                //------------------------------- cria o botao remover ----------------------------------------
+
+                const btn=document.createElement("button")
+                btn.setAttribute("id","btn_remover")
+                btn.innerHTML="Remover"
+                
+                btn.addEventListener("click",(event)=>{
+                    const c_a_remover=event.target.parentNode.dataset.nome
+                    removerCarro(c_a_remover)
+                    gerenciarExibicaoCarros()
+                })
+                carro.appendChild(btn)
             })
         }
 
@@ -212,6 +246,7 @@
             gerenciarExibicaoCarros()
         })
 
+        
 
        
         const c1=new Carro("Corolla",4) //class Pai
@@ -220,7 +255,7 @@
         c1.ligar()
         c1.velocidade=130
         c1.setCor("Vermelho")
-        console.log(`Nome: ${c1.nome}`)
+     /*   console.log(`Nome: ${c1.nome}`)
         console.log(`Portas: ${c1.portas}`)
         console.log(`Cor: ${c1.cor}`)
         console.log(`Ligado: ${(c1.ligado?"Sim":"Não")}`)
@@ -236,7 +271,7 @@
         console.log(`Cor: ${c2.cor}`)
         console.log(`Ligado: ${(c2.ligado?"Sim":"Não")}`)
         console.log(`Velocidade: ${c2.velocidade} km/h`)
-        console.log(`===========================`)
+        console.log(`===========================`)*/
       
     </script>
 </body>
