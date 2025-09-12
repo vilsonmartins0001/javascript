@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Carro{
+    constructor(tipo,estagioTurbo){
+        this.turbo= new Turbo( estagioTurbo)
+        if(tipo==1){
+            this.velMax=120
+            this.nome="normal"
+        } else if(tipo==2){
+            this.velMax=150
+            this.nome="Esportivo"
+        } else if(tipo==3){
+            this.velMax=170
+            this.nome="Corrida"
+        }
+        this.velMax+=this.turbo.potencia
+    }
+     info(){
+        console.log(this.nome)
+        console.log(this.turbo.potencia)
+        console.log(this.velMax)
+        console.log(`---------------------`)
+    }
+
+}
+class Turbo{
+    constructor (e){
+
+        if(e==0){
+            this.potencia=0
+        }else if(e==1){
+            this.potencia=50
+        }else  if(e==2){
+            this.potencia=75
+        }else  if(e==3){
+            this.potencia=100
+        } 
+    }
+   
+}
+const c1=new Carro (1,0)
+const c2=new Carro (2,1)
+c1.info()
+c2.info()
+
+
+    </script>
+    
+</body>
+</html>
