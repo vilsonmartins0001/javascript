@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            border: none;
+        }
+        .dflex{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .div_calc{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: rgb(230, 229, 229);
+            border: 2px solid #000;
+            border-radius: 10px;
+            width: 230px;
+            height: 340px;
+            text-align: center;
+        }
+        .div_nome{
+             display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3em;
+            padding-bottom: 5px;
+           
+        }
+        .div_display{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #160652;
+            width: 210px;
+            height: 60px;
+            background-color: rgb(44, 46, 65);
+            border-radius: 5px;
+            color: white;
+            font-size: 3em;
+
+          
+
+        }
+        #display{
+            width: 220px;
+            text-align: right;
+            padding: 5px;
+        }
+        .div_teclas{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+             flex-wrap: wrap;
+        }
+        .tecla{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            margin: 2px;
+            background-color: rgb(136, 179, 243);
+            color: white;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.507);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.411);
+            font-weight: bolder;
+           
+           
+        }
+        .tecla:hover{
+            cursor: pointer;
+              background-color: rgb(145, 165, 196); 
+
+        }
+        .op:hover{
+            cursor: pointer;
+             background-color: rgb(145, 165, 196);
+
+        }
+        .op{
+             background-color: rgb(88, 132, 197);
+        }
+        .destaque{
+            background-color: rgb(47, 201, 193);
+        }
+    </style>
+</head>
+<body>
+    <div id="div_calc" class="div_calc">
+        <div id="nome" class="div_nome">
+            <p>Minha Calculadora</p>
+
+        </div>
+        <div id="div_display" class="div_display">
+            <p id="display">0</p>
+
+        </div>
+        <div id="div_teclas" class="div_teclas">
+            <button id="t7" class="tecla">7</button>
+            <button id="t8" class="tecla">8</button>
+            <button id="t9" class="tecla">9</button>
+            <button id="t/" class="tecla op">/</button>
+            <button id="t4" class="tecla">4</button>
+            <button id="t5" class="tecla">5</button>
+            <button id="t6" class="tecla">6</button>
+            <button id="tx" class="tecla op">x</button>
+            <button id="t1" class="tecla">1</button>
+            <button id="t2" class="tecla">2</button>
+            <button id="t3" class="tecla">3</button>
+            <button id="t-" class="tecla op">-</button>
+            <button id="t," class="tecla">,</button>
+            <button id="t0" class="tecla">0</button>
+            <button id="t=" class="tecla destaque">=</button>
+            <button id="t+" class="tecla op">+</button>
+
+        </div>
+    </div>
+    
+</body>
+</html>

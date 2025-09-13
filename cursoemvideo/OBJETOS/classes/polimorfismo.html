@@ -7,6 +7,9 @@
 </head>
 <body>
     <script>
+
+
+
         class Carro{
     constructor(tipo,estagioTurbo){
         this.turbo= new Turbo( estagioTurbo)
@@ -43,12 +46,37 @@ class Turbo{
             this.potencia=100
         } 
     }
-   
+}
+ /* O Conceito de  POLIMORFISMO  um método herda o metodo da classe PAI sendo chamado com a tag "super"*/
+    
+class CarroEspecial extends Carro{
+    constructor(estagioTurbo){
+        super(4,estagioTurbo)
+        this.tipoInfo=0
+        this.velMax=300+this.turbo.potencia
+        this.nome="Carro Especial"
+    }  
+    /* O Conceito de  POLIMORFISMO  um método herda o metodo da classe PAI sendo chamado com a tag "super"*/
+
+    info(){
+        if(this.tipoInfo==1){
+            super.info()
+        }else{
+            console.log(this.nome)
+            console.log(`Potencia do Turbo ${this.turbo.potencia}`)
+            console.log(`Velocidade máxima ${this.velMax}`)
+            console.log(`---------------------`)
+
+        }    
+    }
 }
 const c1=new Carro (1,0)
 const c2=new Carro (2,1)
+const c3=new CarroEspecial(3)
+
 c1.info()
 c2.info()
+c3.info()
 
 
     </script>

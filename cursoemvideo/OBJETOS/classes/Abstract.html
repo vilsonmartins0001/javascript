@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class CarroPadrao{
+            constructor(){        
+                if(this.constructor===CarroPadrao){    /*transformando a classe em uma classe abstract*/
+                    throw new TypeError("Essa classe não pode ser instanciada")
+                }
+                if(this.ligar===undefined){
+                    throw new TypeError("É Obrigatório implementar o método Ligado")
+                }
+                if(this.desligar===undefined){
+                    throw new TypeError("É Obrigatório implementar o método Desligado")
+                }
+                this.portas=4
+                this.rodas=4
+                this.ligado=false
+            }
+        }
+        class CarroEsporte extends CarroPadrao{
+            constructor(potencia,nivelTurbo){
+                const t=new Turbo(nivelTurbo)
+                super()
+                this.pot=potencia
+                this.velMax=this.pot+t.potenciaTurbo
+                if(this.velMax <160){
+                    this.nome="Carro de Luxo"
+                }else{
+                    this.nome="Carro de Corrida"
+                }
+                
+                
+            }
+           
+            info(){
+                console.log(`Nome: ${this.nome}`)
+                console.log(`QTD RODAS: ${this.rodas}`)
+                console.log(`Está Ligado? ${this.ligado?"SIM":"Não"}`)
+                console.log(`Potencia: ${this.pot}`)
+                console.log(`VelMax: ${this.velMax}`)
+                 console.log(`---------------------`)
+            }
+            ligar(){
+                this.ligado=true
+            }
+            desligar(){
+                this.ligado=false
+            }
+        }
+        class Turbo{
+            constructor(e){
+                if(e==1){
+                    this.potenciaTurbo=30
+                }else if(e==2){
+                    this.potenciaTurbo=70
+                }else{
+                    this.potenciaTurbo=0
+                }
+
+            }
+        }
+        const c2=new CarroEsporte(120,2)
+        const c1=new CarroEsporte(120,1)
+        c1.ligar()
+        c1.info()
+        c2.info()
+
+    </script>
+    
+</body>
+</html>
