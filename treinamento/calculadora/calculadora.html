@@ -22,11 +22,13 @@
             align-items: center;
             flex-direction: column;
             background-color: rgb(230, 229, 229);
-            border: 2px solid #000;
+            border: 2px solid #00000057;
             border-radius: 10px;
             width: 230px;
-            height: 340px;
+            height: 400px;
             text-align: center;
+            margin: 50px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.411);
         }
         .div_nome{
              display: flex;
@@ -43,10 +45,11 @@
             border: 2px solid #160652;
             width: 210px;
             height: 60px;
-            background-color: rgb(44, 46, 65);
+            background-color: rgb(18, 68, 71);
             border-radius: 5px;
             color: white;
-            font-size: 3em;
+            font-size: 2em;
+            margin-bottom: 10px;
 
           
 
@@ -56,6 +59,9 @@
             text-align: right;
             padding: 5px;
         }
+      
+
+
         .div_teclas{
             display: flex;
             justify-content: center;
@@ -72,7 +78,7 @@
             background-color: rgb(136, 179, 243);
             color: white;
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.507);
-            border: none;
+            border: 2px solid #0000002a;
             border-radius: 5px;
             box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.411);
             font-weight: bolder;
@@ -92,8 +98,12 @@
         .op{
              background-color: rgb(88, 132, 197);
         }
-        .destaque{
+        #tres{
             background-color: rgb(47, 201, 193);
+        }
+        #pon{
+            padding: 0px;
+            margin: 0px;
         }
     </style>
 </head>
@@ -108,25 +118,85 @@
 
         </div>
         <div id="div_teclas" class="div_teclas">
-            <button id="t7" class="tecla">7</button>
-            <button id="t8" class="tecla">8</button>
-            <button id="t9" class="tecla">9</button>
+            <button id="ton" class="tecla espc"><p id="pon">On / <br>off</p></button>
+            <button id="t(" class="tecla num">(</button>
+            <button id="t)" class="tecla num">)</button>
+            <button id="tc" class="tecla espc">C</button>
+            <button id="t7" class="tecla num">7</button>
+            <button id="t8" class="tecla num">8</button>
+            <button id="t9" class="tecla num">9</button>
             <button id="t/" class="tecla op">/</button>
-            <button id="t4" class="tecla">4</button>
-            <button id="t5" class="tecla">5</button>
-            <button id="t6" class="tecla">6</button>
+            <button id="t4" class="tecla num">4</button>
+            <button id="t5" class="tecla num">5</button>
+            <button id="t6" class="tecla num">6</button>
             <button id="tx" class="tecla op">x</button>
-            <button id="t1" class="tecla">1</button>
-            <button id="t2" class="tecla">2</button>
-            <button id="t3" class="tecla">3</button>
+            <button id="t1" class="tecla num">1</button>
+            <button id="t2" class="tecla num">2</button>
+            <button id="t3" class="tecla num">3</button>
             <button id="t-" class="tecla op">-</button>
-            <button id="t," class="tecla">,</button>
-            <button id="t0" class="tecla">0</button>
-            <button id="t=" class="tecla destaque">=</button>
+            <button id="t," class="tecla op">,</button>
+            <button id="t0" class="tecla num">0</button>
+            <button id="tres" class="tecla">=</button>
             <button id="t+" class="tecla op">+</button>
 
         </div>
     </div>
+    <script>
+        const teclasNum=[...document.querySelectorAll(".num")]
+        const teclasOp=[...document.querySelectorAll(".op")]
+        const teclaRes=document.getElementById("t=")
+        const visor=document.getElementById("display")
+        const ton=document.getElementById("ton")
+        const tc=document.getElementById("tc")
+        let sinal=false
+        console.log(teclasOp)
+        
+        teclasNum.map((n)=>{
+            n.addEventListener("click",(event)=>{
+                sinal=false
+               if(visor.innerHTML=="0"){
+                visor.innerHTML=event.target.innerHTML
+               }else{
+                 visor.innerHTML+=event.target.innerHTML
+               } 
+
+            })
+        })
+        teclasOp.map((op)=>{
+           
+            op.addEventListener("click",(event)=>{
+                if(!sinal){
+                    sinal=true
+                    if(visor.innerHTML=="0"){
+                        visor.innerHTML=""
+                    }
+                    if(event.target.innerHTML=="x"){
+                        visor.innerHTML+="*"
+                    }
+                    else{
+                        visor.innerHTML+=event.target.innerHTML
+                    }
+                }
+            })
+            
+       
+        })
+        tc.addEventListener("click",(event)=>{
+            if(visor.innerHTML!=""){
+               visor.innerHTML="0" 
+            }else{
+                visor.innerHTML=""
+            }
+        })
+        ton.addEventListener("click",(event)=>{
+            if(visor.innerHTML==""){
+                visor.innerHTML="0"
+            }else{
+                visor.innerHTML=""
+            }
+        })
+        
+    </script>
     
 </body>
 </html>
