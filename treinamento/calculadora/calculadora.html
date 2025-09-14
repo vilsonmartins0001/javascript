@@ -10,6 +10,11 @@
             margin: 0px;
             border: none;
         }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .dflex{
             display: flex;
             justify-content: center;
@@ -87,12 +92,7 @@
         }
         .tecla:hover{
             cursor: pointer;
-              background-color: rgb(145, 165, 196); 
-
-        }
-        .op:hover{
-            cursor: pointer;
-             background-color: rgb(145, 165, 196);
+            background-color: rgb(145, 165, 196); 
 
         }
         .op{
@@ -101,9 +101,8 @@
         #tres{
             background-color: rgb(47, 201, 193);
         }
-        #pon{
-            padding: 0px;
-            margin: 0px;
+       #tres:hover{
+             background-color: rgb(172, 214, 211); 
         }
     </style>
 </head>
@@ -149,17 +148,30 @@
         const ton=document.getElementById("ton")
         const tc=document.getElementById("tc")
         let sinal=false
-        console.log(teclasOp)
+        let decimal=false
+
         
         teclasNum.map((n)=>{
             n.addEventListener("click",(event)=>{
                 sinal=false
-               if(visor.innerHTML=="0"){
-                visor.innerHTML=event.target.innerHTML
-               }else{
-                 visor.innerHTML+=event.target.innerHTML
-               } 
-
+               
+                    
+                if(event.target.innerHTML==","){
+                    if(decimal){
+                        decimal=true
+                        if(visor.innerHTML=="0"){
+                            visor.innerHTML="0,"
+                        }else{
+                            visor.innerHTML+=event.target.innerHTML
+                        }
+                    }
+                }else{
+                    if(visor.innerHTML=="0"){
+                        visor.innerHTML=""
+                    }
+                    visor.innerHTML+=event.target.innerHTML
+                } 
+                
             })
         })
         teclasOp.map((op)=>{
@@ -177,9 +189,7 @@
                         visor.innerHTML+=event.target.innerHTML
                     }
                 }
-            })
-            
-       
+            })    
         })
         tc.addEventListener("click",(event)=>{
             if(visor.innerHTML!=""){
