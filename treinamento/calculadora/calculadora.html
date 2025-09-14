@@ -55,23 +55,19 @@
             color: white;
             font-size: 2em;
             margin-bottom: 10px;
-
-          
-
         }
         #display{
-            width: 220px;
+
+            width: 200px;
             text-align: right;
             padding: 5px;
         }
-      
-
 
         .div_teclas{
             display: flex;
             justify-content: center;
             align-items: center;
-             flex-wrap: wrap;
+            flex-wrap: wrap;
         }
         .tecla{
             display: flex;
@@ -133,7 +129,7 @@
             <button id="t2" class="tecla num">2</button>
             <button id="t3" class="tecla num">3</button>
             <button id="t-" class="tecla op">-</button>
-            <button id="t," class="tecla op">,</button>
+            <button id="t." class="tecla op">.</button>
             <button id="t0" class="tecla num">0</button>
             <button id="tres" class="tecla">=</button>
             <button id="t+" class="tecla op">+</button>
@@ -143,7 +139,7 @@
     <script>
         const teclasNum=[...document.querySelectorAll(".num")]
         const teclasOp=[...document.querySelectorAll(".op")]
-        const teclaRes=document.getElementById("t=")
+        const teclaIgual=document.getElementById("tres")
         const visor=document.getElementById("display")
         const ton=document.getElementById("ton")
         const tc=document.getElementById("tc")
@@ -151,16 +147,14 @@
         let decimal=false
 
         
-        teclasNum.map((n)=>{
+        teclasNum.forEach((n)=>{
             n.addEventListener("click",(event)=>{
                 sinal=false
-               
-                    
-                if(event.target.innerHTML==","){
-                    if(decimal){
+                if(event.target.innerHTML=="."){               
+                    if(!decimal){
                         decimal=true
                         if(visor.innerHTML=="0"){
-                            visor.innerHTML="0,"
+                            visor.innerHTML="0."
                         }else{
                             visor.innerHTML+=event.target.innerHTML
                         }
@@ -170,12 +164,10 @@
                         visor.innerHTML=""
                     }
                     visor.innerHTML+=event.target.innerHTML
-                } 
-                
+                }
             })
         })
         teclasOp.map((op)=>{
-           
             op.addEventListener("click",(event)=>{
                 if(!sinal){
                     sinal=true
@@ -192,6 +184,8 @@
             })    
         })
         tc.addEventListener("click",(event)=>{
+            sinal=false
+            decimal=false
             if(visor.innerHTML!=""){
                visor.innerHTML="0" 
             }else{
@@ -199,11 +193,20 @@
             }
         })
         ton.addEventListener("click",(event)=>{
+            sinal=false
+            decimal=false
             if(visor.innerHTML==""){
                 visor.innerHTML="0"
             }else{
                 visor.innerHTML=""
             }
+        })
+        teclaIgual.addEventListener("click",(event)=>{
+            sinal=false
+            decimal=false
+            const res=eval(visor.innerHTML)
+            visor.innerHTML=res
+
         })
         
     </script>
