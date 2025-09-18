@@ -4,22 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
+   
+    
     <style>
         *{
             padding: 0px;
             margin: 0px;
             border: none;
         }
-        body{
+        .div_principal{
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: row;
+            position: absolute;
+            top: 0px;
+            right: -230px;
+            transition: all 0.5s;
         }
-        .dflex{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
+        .div_calcExibir{
+            right: 0px !important;
+            transition: all 0.5s;
         }
         .div_calc{
             display: flex;
@@ -31,16 +36,29 @@
             border-radius: 10px;
             width: 230px;
             height: 400px;
-            text-align: center;
-            margin: 50px;
             box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.411);
         }
+        .aba_calc{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 50px;
+            background-color: rgb(136, 179, 243);
+            color: white;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.507);
+            border: 2px solid #0000002a;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.411);
+            font-weight: bolder;
+            cursor: pointer;
+        }
         .div_nome{
-             display: flex;
+            display: flex;
             justify-content: center;
             align-items: center;
             font-size: 1.3em;
-            padding-bottom: 5px;
+
            
         }
         .div_display{
@@ -54,7 +72,7 @@
             border-radius: 5px;
             color: white;
             font-size: 2em;
-            margin-bottom: 10px;
+            margin: 10px;
         }
         #display{
 
@@ -103,16 +121,16 @@
     </style>
 </head>
 <body>
-    <div id="div_calc" class="div_calc">
-        <div id="nome" class="div_nome">
+    <div id="div_principal" class="div_principal">
+        <div id="aba_calc" class="aba_calc"><img id="img_aba_calc" src="esquerda.svg" alt=""></div>
+        <div id="div_calc" class="div_calc">
+            <div id="nome" class="div_nome">
             <p>Minha Calculadora</p>
-
-        </div>
-        <div id="div_display" class="div_display">
+            </div>
+            <div id="div_display" class="div_display">
             <p id="display">0</p>
-
-        </div>
-        <div id="div_teclas" class="div_teclas">
+            </div>
+            <div id="div_teclas" class="div_teclas">
             <button id="tcpy"class="tecla">cpy</button>
             <button id="t(" class="tecla num">(</button>
             <button id="t)" class="tecla num">)</button>
@@ -133,9 +151,11 @@
             <button id="t0" class="tecla num">0</button>
             <button id="tres" class="tecla">=</button>
             <button id="t+" class="tecla op">+</button>
-
         </div>
+        </div>
+        
     </div>
+    
     <script>
         const teclasNum=[...document.querySelectorAll(".num")]
         const teclasOp=[...document.querySelectorAll(".op")]
@@ -143,8 +163,33 @@
         const visor=document.getElementById("display")
         const tcpy=document.getElementById("tcpy")
         const tc=document.getElementById("tc")
+        const img_aba_calc=document.getElementById("img_aba_calc")
+        const div_calc=document.getElementById("div_calc")
         let sinal=false
         let decimal=false
+
+        //-------------------abas que serão trocadas as classes---------------------------
+
+
+        const aba_calc=document.getElementById("aba_calc")
+        const div_principal=document.getElementById("div_principal")
+        
+
+        //------ Evento que troca a classe da "div_principal" para a classe que muda sua posição
+
+        aba_calc.addEventListener("click",(event)=>{
+       
+            div_principal.classList.toggle("div_calcExibir")
+
+            if(div_principal.classList.contains("div_calcExibir")){
+                img_aba_calc.setAttribute("src","direita.svg")
+            }else{
+                img_aba_calc.setAttribute("src","esquerda.svg")
+            }
+            console.log(div_principal)
+        })
+
+        //=====================================================================
 
         
         teclasNum.forEach((n)=>{
