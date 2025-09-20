@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promisse</title>
+    <style>
+        .numero{
+            font-size: large;
+        }
+        .ok{
+            color: #00f;
+        }
+        .erro{
+            color: #f00;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="numero" class="numero"></div>
+    <button id="btn_promessa">Promessa</button>
+    <script>
+        const numero=document.getElementById("numero")
+        const btn_promessa=document.getElementById("btn_promessa")
+
+        btn_promessa.addEventListener("click",(event)=>{
+            numero.innerHTML=("Processando...")
+            promessa(true)
+                /*.then((retorno)=>{ //quando retorna true
+                numero.innerHTML=retorno
+                numero.classList.remove("erro")
+                numero.classList.add("ok")
+                })
+                .catch((retorno)=>{ // quando retorna false
+                numero.innerHTML=retorno
+                numero.classList.remove("ok")
+                numero.classList.add("erro")
+            })*/
+
+        })
+
+        const promessa=(res)=>{
+            let p= new Promise((resolve,rejected)=>{
+                let resultado=res
+                let tempo=3000
+                setTimeout(()=>{
+                    if(resultado){
+                        resolve()
+                        numero.innerHTML="Deu tudo certo"
+                        numero.classList.remove("erro")
+                        numero.classList.add("ok")
+                    }else{
+                        rejected()
+                        numero.innerHTML="Deu tudo errado"
+                        numero.classList.remove("ok")
+                        numero.classList.add("erro")
+
+                    }
+                    
+                },tempo)
+            })
+            return p
+
+        }
+        /*const promessa=(res)=>{
+            let p= new Promise((resolve,reject)=>{
+                let resultado=res
+                let tempo=3000
+                setTimeout(()=>{
+                    if(resultado){
+                        resolve("Deu tudo certo")
+                    }else{
+                        reject("Deu tudo errado")
+                    }
+                    
+                },tempo)
+            })
+            return p
+
+        }*/
+        numero.innerHTML=("Esperando...")
+       
+        
+    </script>
+    
+</body>
+</html>
