@@ -4,8 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>datas</title>
+    <style>
+        *{
+            border: none;
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        .timer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 300px;
+            background-color: #eee;
+            padding: 10px;
+            border: 3px solid #8888882f;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.432);
+
+        }
+        #div_relogio{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            background-color: #444;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: larger;
+            padding: 10px;
+            border-radius: 10px;
+            height: 30px;
+
+        }
+        input{
+            border: 1px solid #000;
+            font-size: larger;
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 5px;
+
+        }
+        button{
+            background-color: #5ae0e0;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: larger;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.432);
+        }
+        .alarme{
+            background-color: #f00 !important;
+        }
+    </style>
 </head>
 <body>
+    <div id="timer" class="timer">
+        <div id="div_data"> </div>
+        <div id="div_relogio"> </div>
+        <div id="def_alarme">
+            <label id="hora_alarme">Hora do Alarme:</label>
+            <label>Tempo do Alarme</label>
+            <input type="number" id="tmp_alarme" value="0" min="0">
+        </div>
+        <div id="comandos" class="comandos">
+            <button id="btn_ativar">Ativar</button>
+            <button id="btn_parar">Parar</button>
+        </div>
+    </div>
     <script>
         /*Date.now() Timestamp
         getDate() = dia do mês
@@ -27,18 +95,39 @@
         setMileseconds()= Define milisegundos
         toDateString()= retorna somente a data*/
 
-
-
-
-
-
-
-
-
+        const div_data=document.querySelector("#div_data")
+        const div_relogio=document.querySelector("#div_relogio")
+        
         const data=new Date()
 
-        console.log(data.now())
+        let dia=data.getDate()  //formatando dia para 2 digitos
+        dia=dia<10?"0"+dia:dia
 
+        let mes=data.getMonth() //formatando mes para 2 digitos
+        mes=mes<10?"0"+mes:mes
+
+        const data_String=`${dia}/${mes}/${data.getFullYear()}` 
+        div_data.innerHTML=data_String
+
+        const relogio=()=>{
+            const data=new Date()
+
+            
+            let hora=data.getHours()
+            hora=hora<10?"0"+hora:hora
+            let min=data.getMinutes()
+            min=min<10?"0"+min:min
+            let seg=data.getSeconds()
+            seg=seg<10?"0"+seg:seg
+             const data_completa=`${hora}:${min}:${seg}` 
+             div_relogio.innerHTML=data_completa
+        }
+        //atualiza a cada 1000 milisegundos
+
+        const intervalo=setInterval(relogio,1000)
+        relogio()
+           
+       
     </script>
     
 </body>
