@@ -17,7 +17,7 @@
             align-items: center;
             flex-direction: column;
             width: 300px;
-            background-color: #eee;
+            background-color: #dadada;
             padding: 10px;
             border: 3px solid #8888882f;
             border-radius: 5px;
@@ -65,9 +65,9 @@
         <div id="div_data"> </div>
         <div id="div_relogio"> </div>
         <div id="def_alarme">
-            <label id="hora_alarme">Hora do Alarme:</label>
-            <label>Tempo do Alarme</label>
-            <input type="number" id="tmp_alarme" value="0" min="0">
+            <label id="hora_alarme">Hora do Alarme:</label><br>
+            <label>Tempo do Alarme (segundos)</label>
+            <input type="number" id="tmp_alarme" value="10" min="0">
         </div>
         <div id="comandos" class="comandos">
             <button id="btn_ativar">Ativar</button>
@@ -94,36 +94,85 @@
         setSeconds()= Define Segundos
         setMileseconds()= Define milisegundos
         toDateString()= retorna somente a data*/
+        //------------------------- Elementos do DOM ------------
 
+        const btn_ativar=document.getElementById("btn_ativar")
+        const btn_parar=document.getElementById("btn_parar")
+        const tmp_alarme=document.getElementById("tmp_alarme")
+        const timer=document.getElementById("timer")
+        const label_hora_alarme=document.getElementById("hora_alarme")
         const div_data=document.querySelector("#div_data")
         const div_relogio=document.querySelector("#div_relogio")
-        
-        const data=new Date()
 
+
+
+        //-------------------------- variaveis relogio-------------
+
+        const data=new Date()
         let dia=data.getDate()  //formatando dia para 2 digitos
         dia=dia<10?"0"+dia:dia
-
         let mes=data.getMonth() //formatando mes para 2 digitos
         mes=mes<10?"0"+mes:mes
-
         const data_String=`${dia}/${mes}/${data.getFullYear()}` 
         div_data.innerHTML=data_String
+        
+        //--------------------variaveis do alarme ---------------
+
+        const som_alarme=new Audio("alarmePassaro.mp3") 
+        som_alarme.loop=-1
+        let ts_atual=null
+        let ts_alarme=null
+        let alarme_ativado=false
+        let alarme_tocando=false
+        
+        
+        //--------------------- botôes ---------------------
+        btn_ativar.addEventListener("click",(event)=>{
+            ts_atual=Date.now()
+            ts_alarme=ts_atual+(tmp_alarme.value*1000)
+            
+            const dt_alarme=new Date(ts_alarme)
+            let hora=dt_alarme.getHours()
+            hora=hora<10?"0"+hora:hora
+            let min=dt_alarme.getMinutes()
+            min=min<10?"0"+min:min
+            let seg=dt_alarme.getSeconds()
+            seg=seg<10?"0"+seg:seg
+            alarme_ativado=true
+            label_hora_alarme.innerHTML=`Hora do Alarme:${hora}:${min}:${seg}`
+
+        })
+        btn_parar.addEventListener("click",(event)=>{
+            alarme_ativado=false
+            alarme_tocando=false
+            label_hora_alarme.innerHTML="Hora do Alarme:"
+            tmp_alarme.value=0
+            timer.classList.remove("alarme")
+            som_alarme.pause();
+            som_alarme.currentTime=0
+
+        })
+
+        //-------------------------------------------------------
 
         const relogio=()=>{
             const data=new Date()
-
-            
             let hora=data.getHours()
             hora=hora<10?"0"+hora:hora
             let min=data.getMinutes()
             min=min<10?"0"+min:min
             let seg=data.getSeconds()
             seg=seg<10?"0"+seg:seg
-             const data_completa=`${hora}:${min}:${seg}` 
-             div_relogio.innerHTML=data_completa
+            const data_completa=`${hora}:${min}:${seg}` 
+            div_relogio.innerHTML=data_completa
+            if(alarme_ativado && !alarme_tocando){
+               alarme_tocando=true
+               som_alarme.play() 
+               timer.classList.add("alarme")
+            }
         }
+        
         //atualiza a cada 1000 milisegundos
-
         const intervalo=setInterval(relogio,1000)
         relogio()
            
