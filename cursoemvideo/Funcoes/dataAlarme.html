@@ -56,7 +56,7 @@
             box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.432);
         }
         .alarme{
-            background-color: #f00 !important;
+            background-color: rgb(231, 135, 240) !important;
         }
     </style>
 </head>
@@ -67,7 +67,7 @@
         <div id="def_alarme">
             <label id="hora_alarme">Hora do Alarme:</label><br>
             <label>Tempo do Alarme (segundos)</label>
-            <input type="number" id="tmp_alarme" value="10" min="0">
+            <input type="number" id="tmp_alarme" value="3" min="0">
         </div>
         <div id="comandos" class="comandos">
             <button id="btn_ativar">Ativar</button>
@@ -118,7 +118,7 @@
         
         //--------------------variaveis do alarme ---------------
 
-        const som_alarme=new Audio("alarmePassaro.mp3") 
+        const som_alarme=new Audio("alarme02.mp3") 
         som_alarme.loop=-1
         let ts_atual=null
         let ts_alarme=null
@@ -166,10 +166,12 @@
             const data_completa=`${hora}:${min}:${seg}` 
             div_relogio.innerHTML=data_completa
             if(alarme_ativado && !alarme_tocando){
-               alarme_tocando=true
-               som_alarme.play() 
-               timer.classList.add("alarme")
-            }
+                if(data.getTime() >= ts_alarme){
+                    alarme_tocando=true
+                    som_alarme.play() 
+                    timer.classList.add("alarme")
+                 }
+                }
         }
         
         //atualiza a cada 1000 milisegundos
