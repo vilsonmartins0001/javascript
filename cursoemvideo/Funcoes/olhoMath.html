@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olho</title>
+    <style>
+        *{
+            border: none;
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        .olhos{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+            height: 200px;
+            flex-direction: row;
+           
+        }
+        .olho{
+            width: 200px;
+            height: 200px;
+            transform-origin: center center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="olhos">
+        <img src="olho.png" class="olho">
+        <img src="olho.png" class="olho">
+    </div>
+    <div id="res"></div>
+     
+    
+    <script>
+    const olhos=[...document.getElementsByClassName("olho")]
+    const res=document.getElementById("res")
+    
+    
+    //------------------ Pegar o movimento do Mouse-----------------
+
+    let pos_x=0
+    let pos_y=0
+    
+
+    window.addEventListener("mousemove",(event)=>{
+        pos_x=event.ClientX
+        pos_y=event.clientY
+
+        const rot=Math.atan2(pos_x,pos_y)*180/Math.PI
+        olhos.forEach((o)=>{
+            o.style.transform="rotate("+rot+"deg)"
+        })
+        console.log(rot)
+    })
+   
+
+    
+    
+
+    </script>
+    
+</body>
+</html>
