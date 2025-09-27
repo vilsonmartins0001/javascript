@@ -48,20 +48,15 @@
     
 
     window.addEventListener("mousemove",(event)=>{
-        pos_x=event.ClientX
+        pos_x=event.clientX
         pos_y=event.clientY
 
-        const rot=Math.atan2(pos_x,pos_y)*180/Math.PI
+        const rot=Math.atan2(pos_y,pos_x)*360/Math.PI
         olhos.forEach((o)=>{
             o.style.transform="rotate("+rot+"deg)"
         })
         console.log(rot)
     })
-   
-
-    
-    
-
     </script>
     
 </body>

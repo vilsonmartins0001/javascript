@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes de Bolinhas</title>
+    <style>
+        *{
+            border: none;
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        .controles{
+            display: flex;
+            justify-content: flex-start;
+            align-items: stretch;
+            width: 100%;
+            background-color: #eee;
+            border: 2px solid #000;
+            border-radius: 5px;
+        }
+        .controle{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            background-color: #fff;
+            border: 2px solid #888;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 5px;
+        }
+        button{
+            background-color: #888;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type='number'], #num_objetos{
+            padding: 5px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #000;
+            width: 150px;
+        }
+        .palco{
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            background-color: #eee;
+            border: 2px solid #000;
+            border-radius: 5px;
+            position: absolute;
+            overflow: hidden;
+        }
+        .bola{
+            position: absolute;
+            border-radius: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="controles" class="controles">
+        <div class="controle">
+            <label>Número de objetos</label>
+            <p id="num_objetos">0</p>
+        </div>
+        <div class="controle">
+            <label>Quantidade de objetos</label>
+            <input type="number" value="0" min="0" id="txt_qtde">
+            <button id="btn_add">Adicionar</button>
+        </div>
+         <div class="controle">
+            <button id="btn_remover">Remover Todos</button>
+        </div>
+    </div>
+    <div id="palco" class="palco"></div>
+    <script>
+        const palco=document.getElementById("palco")
+        const num_objetos=document.getElementById("num_objetos")
+        const txt_qtde=document.getElementById("txt_qtde")
+        const btn_add=document.getElementById("btn_add")
+        const btn_remover=document.getElementById("btn_remover")
+
+        let largura_palco=palco.offsetWidth
+        let altura_palco=palco.offsetHeight
+        let bolas=[]
+        let num_bola=0
+
+        class Bola{
+            constructor(arrayBolas, palco){
+
+                this.tam=Math.floor(Math.random()*15)+10
+
+                //cor
+                this.r=Math.floor(Math.random()*255)
+                this.g=Math.floor(Math.random()*255)
+                this.b=Math.floor(Math.random()*255)
+                
+                //posição
+
+                this.px=Math.floor(Math.random()*(largura_palco-this.tam))
+                this.py=Math.floor(Math.random()*(largura_palco-this.tam))
+                
+                //velocidade
+
+                this.velx=Math.floor(Math.random()*2)+0.5
+                this.vely=Math.floor(Math.random()*2)+0.5
+
+                //direção
+                this.dirx=(Math.random()*10)>5?1:-1
+                this.diry=(Math.random()*10)>5?1:-1
+
+                //criação
+
+                this.palco=palco
+                this.arrayBolas=arrayBolas
+                this.id=Date.now()+"_"+Math.floor(Math.random()*100000000000)
+                this.controle=0
+               
+                this.desenhar()
+                this.controle=setInterval(this.controlar,10)
+                this.eu=document.getElementById(this.id)
+                num_bola++
+                num_objetos=num_bola
+
+
+            }
+
+             minhaPos=()=>{
+                return this.bolas.indexOf(this)
+
+            }
+            desenhar=()=>{
+
+                const bolinha=document.createElement("div")
+                bolinha.setAttribute("id",this.id)
+                bolinha.setAttribute("class","bola")
+                bolinha.setAttribute("style",`left:${this.px};top:${this.py};width:${this.tam};height${this.tam};bacground-color:rgb(${this.r},${this.g},${this.b})`)
+
+            }
+            remover=()=>{
+                clearInterval(this.controle)
+                bolas=bolas.filter((bol)=>{
+                    if(bol.id!=this.id){
+                         return bol
+                    }
+                })
+                this.eu.remove()
+                num_bola--
+                num_objetos.innerHTML=num_bola
+
+            }
+            controle_bordas=()=>{
+
+            }
+           
+            controlar=()=>{
+                controle_bordas()
+                this.px+=this.dirx*this.velx
+                this.py+=this.diry*this.vely
+                this.eu.setAttribute("style",`left:${this.px};top:${this.py};width:${this.tam};height${this.tam};bacground-color:rgb(${this.r},${this.g},${this.b})`)
+                
+
+            }
+
+        }
+
+        //----------------------- Evento no redicionamento de tela-------------------------------------
+
+        window.addEventListener("resize",(event)=>{
+            largura_palco=palco.offsetWidth
+            altura_palco=palco.offsetHeight
+           
+        })
+
+        btn_add.addEventListener("click",(event)=>{
+            const qtde=txt_qtde.value
+            for(let i=0;i<qtde;i++){
+                //instanciar novas bolinhas
+            }
+           
+
+        })
+        btn_remover.addEventListener("click",(event)=>{
+            bolas.map((bol)=>{
+                //Remover bolinhas
+            })
+        })
+
+    </script>
+    
+</body>
+</html>
